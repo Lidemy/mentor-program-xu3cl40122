@@ -30,16 +30,13 @@ export const add = (a,b) => {
     a = b; 
     b = tmp;
   }
-  for (var i = 0; i<=(a.length - b.length); i++){//補足b的長度
-    if(a.length == b.length){
-      break;
-    }
-    b.unshift(0)
+  while(a.length>b.length){
+    b.unshift(0);
   }
-  //console.log("a,b",a,b)
+  console.log("a,b",a,b,a.length,b.length)
   for(var i = a.length-1; i >= 0; i--){
-    //console.log("a",parseInt(a[i]))
-    //console.log('b',parseInt(b[i]))
+    console.log("a",parseInt(a[i]))
+    console.log('b',parseInt(b[i]))
     var n = parseInt(a[i]) + parseInt(b[i]);
     //console.log(n)
     if(plusOne){//加上前一個的進位
@@ -60,4 +57,4 @@ if(plusOne){//最後的進位
 console.log(ans);
 return ans
 }
-add("12312383813881381381","129018313819319831");
+add("1121241294239120391031","35906838359835");
