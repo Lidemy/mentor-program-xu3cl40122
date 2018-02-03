@@ -4,4 +4,7 @@ describe("hw1", () => {
   it("should return correct answer when n = 1", () => {
     expect(stars(1)).toEqual(['*'])
   })
+  it("whem n = 2",() =>{
+  	expect(stars(2)).toEqual(['*','**'])
+  })
 })
