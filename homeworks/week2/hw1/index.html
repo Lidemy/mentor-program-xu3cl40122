@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <style type="text/css">
+    *{
+    	box-sizing: border-box;
+    }
+    body{
+    	margin: 0;
+    }
+    p{
+    	margin: 0px;
+    }
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width:100%;
+        height: 50px;
+        color: white;
+        background: #343a40;
+        padding: 10px 10px 15px 10px;
+        display:inline-flex;
+        align-items: flex-end;
+    }
+    .navbar ul{
+    	list-style-type:none;
+    	display: inline-flex;
+    	padding: 0px;
+    	margin: 0px;
+    }
+    .navbar ul li{
+    	margin-left: 18px;
+    	color: gray;
+    }
+    .navbar ul li:hover{
+    	color: white;
+    	cursor: pointer;
+    }
+    .navbar p{
+		font-size: 20px;
+    }
+    .header{
+    	margin-top: 50px;
+    	padding: 0px;
+    	background: #e9ecef;
+    }
+    .container{
+    	max-width: 950px; 
+    	margin: 0 auto;
+    	padding: 20px;
+    }
+    .header h1{
+    	font-size: 80px;
+    	margin: 0 0 10px 0;
+    }
+    .bigButton{
+    	background: rgb(0, 123, 255);
+    	color: white;
+    	padding : 15px 20px 15px 20px;
+    	display: inline-block;
+    	font-size: 20px;
+    	border-radius: 5px;
+    	margin-top: 10px;
+    	transition: background 0.3s;
+    }
+    .bigButton:hover{
+    	cursor: pointer;
+    	background: #0069d9;
+    }
+    .col{
+    	max-width: 33%;
+    	display: inline-block; 
+    }
+    .smallButton{
+    	background: rgb(108, 117, 125);;
+    	color: white;
+    	padding : 12px 15px 12px 15px;
+    	display: inline-block;
+    	font-size: 15px;
+    	border-radius: 5px;
+    	margin-top: 10px;
+    	transition: background 0.3s;
+    }
+    .smallButton:hover {
+    	cursor: pointer;
+    	background: #5a6268;
+    }
+    .footer {
+    	margin-top: 50px;
+    	font-size: 16px;
+    	padding-top: 20px;
+    	border-top: 1px solid #EAE2E2;
+    }
+    @media only screen and (max-width: 900px){
+    	.col{
+    		max-width: 100%;
+    	}
+    }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+    	<div><p>Navbar</p></div>
+    	<ul>
+    		<li>Home</li>
+    		<li>Link</li>
+    	</ul>
+    </div>
+    <div class="header">
+    	<div class="container">
+	    	<h1>Hello,word</h1>
+	    	<p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+	    	<div class="bigButton">
+	    		<p>Learn more >></p>
+	    	</div>
+    	</div>
+    </div>
+    <div class="container">
+    	<div class="col">
+    		<h1>Heading</h1>
+    		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+    		<div class="smallButton">View detail >></div>
+    	</div>
+    	<div class="col">
+    		<h1>Heading</h1>
+    		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+    		<div class="smallButton">View detail >></div>
+    	</div>
+    	<div class="col">
+    		<h1>Heading</h1>
+    		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+    		<div class="smallButton">View detail >></div>
+    	</div>
+    	<div class="footer">
+    		<p>© Company 2017-2018</p>
+    	</div>
+    </div>
+</body>
+
+</html>
