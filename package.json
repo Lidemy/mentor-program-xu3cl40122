@@ -11,8 +11,18 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-jest": "^22.0.6",
+<<<<<<< HEAD
     "babel-preset-es2015": "^6.24.1",
     "jest": "^22.1.4",
+=======
+    "jest": "^22.0.6",
+>>>>>>> master
     "regenerator-runtime": "^0.11.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1"
   }
 }

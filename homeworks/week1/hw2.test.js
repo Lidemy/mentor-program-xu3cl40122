@@ -4,4 +4,7 @@ describe("hw2", () => {
   it("should return correct answer when str = nick", () => {
     expect(capitalize('nick')).toBe('Nick')
   })
+  it(",nick",() =>{
+  	expect(capitalize(',nick')).toBe(',nick')
+  })
 })
