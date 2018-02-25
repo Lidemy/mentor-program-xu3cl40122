@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #e6decc;
+}
+h1 {
+  font-weight: normal;
+  margin: 0 0 25px 0;
+}
+p {
+  font-size: 0.8rem;
+}
+input {
+  border: 0px;
+}
+input:focus {
+  outline: none;
+}
+.banner {
+  width: 100%;
+  height: 280px;
+  background: url("https://lh6.googleusercontent.com/DhGTpS0hX86eaiiSOXINzHWYugDnLjNfGMoALJNJFkFfED6RWNIGEaUTriu1ltHYPiE02g0elg=w1200");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0px;
+  z-index: -10;
+}
+.container {
+  width: 640px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px 40px 20px 30px;
+}
+.topDiv {
+  width: 640px;
+  margin: 0 auto;
+  height: 8px;
+  margin-top: 180px;
+  background: #c2b96e;
+}
+.red {
+  color: #db4437;
+}
+.question {
+  width: 100%;
+  padding: 20px 10px;
+  margin-bottom: 2px;
+}
+.question h1 {
+  font-size: 1.5rem;
+  display: inline-block;
+  margin: 0;
+}
+.question h2 {
+  color: #db4437;
+  font-size: 1rem;
+  font-weight: normal;
+  display: none;
+}
+.question .textInput {
+  margin: 20px 0 0 0;
+  display: block;
+  width: 300px;
+  font-size: 1rem;
+  padding: 5px 0px;
+  background-color: inherit;
+}
+.underLine {
+  width: 300px;
+  height: 2px;
+  background: #737373;
+  transform-origin: center;
+  transform: scale3d(0, 1, 1);
+  transition: all 0.3s ease-out;
+}
+.inputBorder {
+  width: 300px;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  position: relative;
+}
+.radioInput {
+  margin: 15px 5px;
+  width: 18px;
+  height: 18px;
+}
+.radioInput:hover {
+  cursor: pointer;
+}
+.radioContainer {
+  display: flex;
+  align-items: center;
+}
+.topContainer {
+  padding: 0 10px;
+}
+.topContainer a {
+  color: #00f;
+}
+.noAnswer {
+  background: #ffebee;
+}
+.noAnswer .inputBorder {
+  border-color: #db4437;
+}
+.noAnswer .underLine {
+  background: #db4437;
+}
+.noAnswer h2 {
+  display: block;
+}
+#submit {
+  width: 90px;
+  height: 35px;
+  background-color: #1d86ea;
+  color: #fff;
+  border-radius: 3px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+#submit:hover {
+  cursor: pointer;
+}
+.alert {
+  color: #808080;
+}
+.footer {
+  margin-top: 30px;
+  text-align: center;
+  color: #646464;
+}
+.footer a {
+  text-decoration: none;
+  color: inherit;
+}
+.footer h1 {
+  cursor: pointer;
+}
+.problem {
+  position: fixed;
+  height: 20px;
+  left: 15px;
+  bottom: 15px;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  font-size: 0.5rem;
+}
+.problem:hover .reply {
+  opacity: 1;
+  visibility: visible;
+}
+.problem:hover {
+  cursor: pointer;
+}
+.wow {
+  padding: 3px 8px;
+  background: #585858;
+}
+.reply {
+  visibility: hidden;
+  opacity: 0;
+  padding: 3px 8px;
+  margin-left: 15px;
+  background: #585858;
+  transition: visibility 0s, opacity 0.5s ease-out;
+  transition-delay: 0.3s;
+}

@@ -9,6 +9,3 @@ export const stars = (n) => {
   console.log(a);
   return a;
 };
-
-
-
