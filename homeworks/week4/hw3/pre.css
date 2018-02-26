@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-image: url("picture/bg-default.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+}
+body .black_back {
+  background-color: rgba(0,0,0,0.4);
+  min-height: 100vh;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.row {
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+/*flex 內建全部子元素排在同一排，加上wrap可分開排*/
+  justify-content: space-around;
+}
+.col {
+  width: 300px;
+  display: inline-block;
+  margin-bottom: 20px;
+  transition: filter 1s, box-shadow 1s;
+}
+.col:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.5);
+  filter: brightness(1.5);
+/*如果只要部分變亮
+            .col:hover .preview
+            filter: brightness(1.5);
+            */
+}
+.col .preview {
+  height: 168.75px;
+  position: relative;
+  z-index: 100;
+}
+.col img{
+  position: relative;
+}
+.preview:before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('picture/live_user_wayne75525-320x180.jpg');
+}
+.col .preview img {
+  width: 100%;
+}
+.col .bottom {
+  background-color: rgba(0,0,0,0.5);
+  padding: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.col .bottom .avatar {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.col .bottom .avatar img {
+  width: 100%;
+}
+.col .bottom .channel_name {
+  white-space: nowrap; /*死都不換行*/
+  text-overflow: ellipsis; /*產生...效果*/
+  overflow: hidden;
+  width: 200px; /*需限制寬度才能達成效果*/
+}
+.col .bottom .intro {
+  color: #fff;
+  text-align: left;
+}
+.pd{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url('picture/live_user_wayne75525-320x180.jpg');
+
+}
+.col:last-child{
+  visibility: hidden;
+}
