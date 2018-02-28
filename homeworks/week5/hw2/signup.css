@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 75%;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+p {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.5em;
+}
+h1,
+h2,
+h3 {
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+}
+input {
+  border: 0px;
+}
+input:focus {
+  outline: none;
+}
+.back {
+  width: 100%;
+  height: 100vh;
+  background: url("picture/jonathan-bean-37632-unsplash.jpg");
+  background-size: cover;
+  position: fixed;
+  z-index: -10;
+  filter: blur(5px);
+}
+.backContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+.container {
+  background: rgba(0,0,0,0.6);
+  width: 1200px;
+  height: 55vh;
+  border-radius: 5px;
+  padding: 70px 60px;
+  color: #fff;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.col {
+  width: 40%;
+}
+.col h1 {
+  font-size: 3rem;
+  margin: 20px 0px;
+}
+.col p {
+  font-size: 1.2rem;
+}
+.button {
+  border: 1px solid #fff;
+  width: 140px;
+  height: 40px;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.3rem;
+  margin-top: 30px;
+}
+.button:hover {
+  cursor: pointer;
+}
+.switch {
+  background: #fff;
+  position: absolute;
+  width: 600px;
+  height: 65vh;
+  border-radius: 4px;
+  box-shadow: 2px 1px 8px 2px rgba(0,0,0,0.5);
+}
+.switch_content {
+  padding: 80px 60px;
+}
+.switch_content h1 {
+  color: #dc502f;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+input {
+  width: 100%;
+  border-bottom: 2px solid rgba(193,192,192,0.988);
+  padding: 12px 0px;
+  color: rgba(193,192,192,0.988);
+  font-size: 1.3rem;
+}
+.logIn {
+  display: none;
+}
+.submit {
+  width: 140px;
+  height: 40px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 30px;
+  color: #fff;
+  background: #dc502f;
+  margin-left: 300px;
+}
