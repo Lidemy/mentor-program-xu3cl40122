@@ -3,6 +3,7 @@ include('connect.php');
 //$email = $_POST["email"];
 //$pwd = $_POST["pwd"];
 //$nickname = $_REQUEST["nickname"];
+
 $type = $_REQUEST['type'];
 $value = $_REQUEST['value'];
 

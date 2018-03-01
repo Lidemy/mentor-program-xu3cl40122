@@ -4,14 +4,26 @@ const dq = (n) =>{
 const dqa = (n) =>{
 	return document.querySelectorAll(n)
 }
-
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 
 $(document).ready(function(){
 	//display cookie
-	console.log(123)
 	var user = getCookie("board_member_id")
 	if (user != "") {
-        alert("Welcome again " + user);
+        alert("Welcome " + user);
     }
     else{
     	alert('noin')
@@ -30,6 +42,7 @@ $(document).ready(function(){
 		$('.signUp').css('display','')
 	});
 	//---signup form check ---
+	var canSignUp = false
     dq('.signup_nick_name').addEventListener('focusout', (e) => {
         if (e.target.value == '') return
         else {
@@ -39,6 +52,10 @@ $(document).ready(function(){
                     var res = this.responseText;
                     if (res == 'nopass'){
                     	alert('此暱稱已被使用')
+                    	canSignUp == false
+                    }
+                    else{
+                    	canSignUp == true
                     }
                 }
             };
@@ -46,6 +63,7 @@ $(document).ready(function(){
             xmlhttp.send();
         }
     })
+
 	dq('.signup_email').addEventListener('focusout',(e)=>{
 		if(e.target.value == '') return
 		else{
@@ -55,13 +73,29 @@ $(document).ready(function(){
                 var res = this.responseText;
                 if (res == 'nopass'){
                     alert('此email已被使用')
+                    canSignUp == false
                 }
+                else{
+                	canSignUp == true
+                }
+
             }
         	};
         xmlhttp.open("GET", "signup.php?value=" + e.target.value + "&type=email", true);
         xmlhttp.send();
     	}	
 	})
+/*
+	dq('.signUp').addEventListener('submit'),(e) =>{
+		e.preventDefault()
+		if (canSignUp){
+			alert('pass')
+		}
+		else{
+			alert('請檢查表單')
+		}
+	}
+	*/
 	//--- login form check ---
 	dq('.logIn').addEventListener('submit',(e) =>{
 		e.preventDefault()
