@@ -7,6 +7,15 @@ const dqa = (n) =>{
 
 
 $(document).ready(function(){
+	//display cookie
+	console.log(123)
+	var user = getCookie("board_member_id")
+	if (user != "") {
+        alert("Welcome again " + user);
+    }
+    else{
+    	alert('noin')
+    }
 	//--- switch animation ---
 	$("#log").click(function() {
 		$(".switch").animate({left: '600px'},300);
