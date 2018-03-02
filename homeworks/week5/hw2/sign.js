@@ -42,8 +42,8 @@ $(document).ready(function(){
 		$('.signUp').css('display','')
 	});
 	//---signup form check ---
-	var canSignUp = false
-    dq('.signup_nick_name').addEventListener('focusout', (e) => {
+	var canSignUp = true
+    dq('.signup_nickname').addEventListener('focusout', (e) => {
         if (e.target.value == '') return
         else {
             var xmlhttp = new XMLHttpRequest();
@@ -52,10 +52,10 @@ $(document).ready(function(){
                     var res = this.responseText;
                     if (res == 'nopass'){
                     	alert('此暱稱已被使用')
-                    	canSignUp == false
+                    	canSignUp = false
                     }
                     else{
-                    	canSignUp == true
+                    	canSignUp = true
                     }
                 }
             };
@@ -73,10 +73,10 @@ $(document).ready(function(){
                 var res = this.responseText;
                 if (res == 'nopass'){
                     alert('此email已被使用')
-                    canSignUp == false
+                    canSignUp = false
                 }
                 else{
-                	canSignUp == true
+                	canSignUp = true
                 }
 
             }
@@ -85,17 +85,37 @@ $(document).ready(function(){
         xmlhttp.send();
     	}	
 	})
-/*
-	dq('.signUp').addEventListener('submit'),(e) =>{
+
+	dq('#form_sign').addEventListener('submit',(e) =>{
 		e.preventDefault()
 		if (canSignUp){
-			alert('pass')
+			var request = new XMLHttpRequest()
+    		request.open("POST", "signup.php")
+    		var accountData = {
+    			'email':dq('.signup_email').value, 
+    			'pwd':dq('.signup_password').value,
+    			'nickname':dq('.signup_nickname').value
+    			}
+			var j_data = JSON.stringify(accountData)
+			request.onreadystatechange = function(){
+				if (this.readyState == 4 && this.status == 200){
+					if(this.responseText == 'pass'){
+						alert('成功創立帳號~~')
+					}else{
+						alert(this.responseText)
+					}
+				}
+			}
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    		request.send('x='+j_data);
 		}
 		else{
 			alert('請檢查表單')
+		}{
+
 		}
-	}
-	*/
+	})
+	
 	//--- login form check ---
 	dq('.logIn').addEventListener('submit',(e) =>{
 		e.preventDefault()
