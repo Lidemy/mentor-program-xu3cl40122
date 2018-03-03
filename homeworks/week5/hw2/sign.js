@@ -24,6 +24,7 @@ $(document).ready(function(){
 	var user = getCookie("board_member_id")
 	if (user != "") {
         alert("Welcome " + user);
+        //document.location.href='board.html'
     }
     else{
     	alert('noin')
@@ -86,7 +87,7 @@ $(document).ready(function(){
     	}	
 	})
 
-	dq('#form_sign').addEventListener('submit',(e) =>{
+	dq('.signUp').addEventListener('submit',(e) =>{
 		e.preventDefault()
 		if (canSignUp){
 			var request = new XMLHttpRequest()

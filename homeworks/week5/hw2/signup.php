@@ -6,7 +6,7 @@ function typingCheck(){
 	$type = $_REQUEST['type'];
 	$value = $_REQUEST['value'];
 
-	$sql = "SELECT * FROM users where $type = '$value'";
+	$sql = "SELECT * FROM xu3cl40122_users where $type = '$value'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0){
 	    echo "nopass";
@@ -21,7 +21,7 @@ function signUp(){
 	header("Content-Type: application/json; charset=UTF-8");
 	$obj = json_decode($_POST["x"], false);
 
-	$sql = "INSERT INTO users (email, password, nickname)
+	$sql = "INSERT INTO xu3cl40122_users (email, password, nickname)
 	VALUES ('$obj->email', '$obj->pwd', '$obj->nickname')";
 
 	if ($conn->query($sql) === TRUE) {
