@@ -1,10 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>留言板</title>
-</head>
-<body>
-	<h1>123</h1>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="normalize.css">
+		<link rel="stylesheet" type="text/css" href="board.css">
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+		<script type="text/javascript" src="board.js"></script>
+		<title>留言板</title>
+	</head>
+	<body>
+		<div class="navbar">
+			<div class="logo"><h1>iDearcard</h1></div>
+			<div class="navList">
+				<div class="navButton">註冊</div>
+				<div class="navButton">登入</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="mainComment_container">
+				<form>
+					<h1>留言區</h1>
+					<textarea  class="mainComment" placeholder="想說什麼嗎?"></textarea>
+					<input type="submit" name="">
+				</form>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="inf">
+						<p class="whoComment">abc</p>
+						<p class="time">618554</p>
+					</div>
+					<p class="commentContent">ajfajdao</p>
+					<div class="replyContainer">
+						<div class="replyCol">
+							<div class="inf">
+								<p class="whoComment">abc</p>
+								<p class="time">618554</p>
+							</div>
+							<p class="replyContent">455</p>
+						</div>
+						<div class="replyCol">
+							<div class="inf">
+								<p class="whoComment">abc</p>
+								<p class="time">618554</p>
+							</div>
+							<p class="replyContent">455</p>
+						</div>
+						<div class="replyFormContainer">
+							<form class="replyForm">
+								<textarea  class="mainComment" placeholder="想說什麼嗎?"></textarea>
+								<input type="submit" name="">
+							</form>
+						</div>
+						<div class="replyButton">reply</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="inf">
+						<p class="whoComment">abc</p>
+						<p class="time">618554</p>
+					</div>
+					<p class="commentContent">ajfajdao</p>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
