@@ -14,17 +14,18 @@
 		<div class="navbar">
 			<div class="logo"><h1>iDearcard</h1></div>
 			<div class="navList">
-				<div class="navButton">註冊</div>
-				<div class="navButton">登入</div>
+				<div class="navButton">會員管理</div>
+				<div class="navButton navBar_username">登入</div>
 			</div>
 		</div>
 		<div class="container">
 			<!-- 留言表單 -->
 			<div class="mainComment_container">
-				<form>
+				<form class="mainComment_form">
 					<h1>留言區</h1>
 					<textarea  class="mainComment" placeholder="想說什麼嗎?"></textarea>
 					<input type="submit" name="">
+					<input type="hidden" name="comment_id" value="0">
 				</form>
 			</div>
 			<div class="row">
@@ -57,12 +58,24 @@
 			</div>
 			<p class="replyContent"><?php echo $re_row['content']; ?></p>
 		</div>
-	</div>
-</div>
+	
 
 			<?php
 				}
-					}  ?>
+				?>
+		<div class="replyFormContainer">
+			<form class="replyForm">
+				<textarea  class="replyComment" placeholder="想說什麼嗎?"></textarea>
+				<input type="submit" name="">
+				<input type="hidden" name="comment_id" value=<?php echo $row['comment_id'];?>>
+			</form>
+		</div>
+		<div class="replyButton">reply</div>
+	</div>
+</div>
+			<?php
+					}  
+					?>
 				
 			</div>
 		</div>
