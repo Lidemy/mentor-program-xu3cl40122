@@ -14,7 +14,7 @@
 		<div class="navbar">
 			<div class="logo"><h1>iDearcard</h1></div>
 			<div class="navList">
-				<div class="navButton">會員管理</div>
+				<div class="navButton logout">登出</div>
 				<div class="navButton navBar_username">登入</div>
 			</div>
 		</div>

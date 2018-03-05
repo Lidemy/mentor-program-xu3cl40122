@@ -18,7 +18,12 @@ function getCookie(cname) {
     }
     return "";
 }
-
+function delete_cookie(cookie_name)
+{
+  var cookie_date = new Date ( );  // current date & time
+  cookie_date.setTime (cookie_date.getTime() - 1);
+  document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
+} 
 
 
 
@@ -85,5 +90,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 			addComment(e,true)
 		})
 	}
+	// --- log out ---
+	dq('.logout').addEventListener('click',()=>{
+		delete_cookie("board_member_id")
+		document.location.href='signup.html'
+	})
 
 })
