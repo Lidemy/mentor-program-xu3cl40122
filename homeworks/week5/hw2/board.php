@@ -1,16 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="normalize.css">
+		<link rel="stylesheet" type="text/css" href="board.css">
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+		<script type="text/javascript" src="board.js"></script>
+		<title>留言板</title>
+	</head>
+	<body>
+		<!-- navBar -->
+		<div class="navbar">
+			<div class="logo"><h1>iDearcard</h1></div>
+			<div class="navList">
+				<div class="navButton">註冊</div>
+				<div class="navButton">登入</div>
+			</div>
+		</div>
+		<div class="container">
+			<!-- 留言表單 -->
+			<div class="mainComment_container">
+				<form>
+					<h1>留言區</h1>
+					<textarea  class="mainComment" placeholder="想說什麼嗎?"></textarea>
+					<input type="submit" name="">
+				</form>
+			</div>
+			<div class="row">
+			<!--串留言-->
+				<?php
+					include('connect.php');
+					$sql = "SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = 0 ORDER BY create_at ASC" ;
+					$result=mysqli_query($conn, $sql);
+					while ($row = mysqli_fetch_array ($result)){
+				?>
+	<div class="col">
+		<div class="inf">
+			<p class="whoComment"><?php echo $row['nickname']; ?></p>
+			<p class="time"><?php echo $row['create_at']; ?></p>
+		</div>
+		<p class="commentContent"><?php echo $row['content']; ?></p>
+		<div class="replyContainer">
+	
+				<!--串子留言-->
+				<?php
+					$comment_id = $row['comment_id'];
+					$re_sql = "SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = '$comment_id' ORDER BY create_at ASC";
+					$re_result=mysqli_query($conn, $re_sql);
+					while ($re_row = mysqli_fetch_array ($re_result)){
+				?>
+		<div class="replyCol">
+			<div class="inf">
+				<p class="whoComment"><?php echo $re_row['nickname']; ?></p>
+				<p class="time"><?php echo $re_row['create_at']; ?></p>
+			</div>
+			<p class="replyContent"><?php echo $re_row['content']; ?></p>
+		</div>
+	</div>
+</div>
 
-
-<?php
-include('connect.php');
-$sql = "SELECT * FROM xu3cl40122_comment";
-$result=mysqli_query($conn, $sql);
-while ($row = mysqli_fetch_array ($result)){
-	echo $row['comment_id'],$row['content'];
-}
-
-
-
-
-
-
-?>
+			<?php
+				}
+					}  ?>
+				
+			</div>
+		</div>
+	</body>
+</html>
