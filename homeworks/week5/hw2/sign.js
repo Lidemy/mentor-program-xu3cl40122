@@ -24,7 +24,7 @@ $(document).ready(function(){
 	var user = getCookie("board_member_id")
 	if (user != "") {
         alert("Welcome " + user);
-        //document.location.href='board.html'
+        document.location.href='board.php'
     }
     else{
     	alert('noin')
