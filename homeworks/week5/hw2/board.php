@@ -32,7 +32,18 @@
 			<!--串留言-->
 				<?php
 					include('connect.php');
-					$sql = "SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = 0 ORDER BY create_at ASC" ;
+					// --- 分頁 ---
+					if (!isset($_GET['page'])){
+						$page = 1;
+					}else{
+						$page = intval($_GET['page']);
+					}
+					$page_sql = "SELECT COUNT(`comment_id`) FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = 0 ORDER BY create_at DESC" ;
+					$page_result = mysqli_query($conn, $page_sql);
+					$page_row = mysqli_fetch_array ($page_result);
+					$page_num = ceil($page_row[0]/10);
+					$a = intval(($page-1)*10);
+					$sql = "SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = 0 ORDER BY create_at DESC LIMIT $a,10";
 					$result=mysqli_query($conn, $sql);
 					while ($row = mysqli_fetch_array ($result)){
 				?>
@@ -46,8 +57,8 @@
 	
 				<!--串子留言-->
 				<?php
-					$comment_id = $row['comment_id'];
-					$re_sql = "SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = '$comment_id' ORDER BY create_at ASC";
+					$comment_id = $row['comment_id']; 
+					$re_sql = "SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = '$comment_id' ORDER BY create_at DESC";
 					$re_result=mysqli_query($conn, $re_sql);
 					while ($re_row = mysqli_fetch_array ($re_result)){
 				?>
@@ -76,7 +87,18 @@
 			<?php
 					}  
 					?>
-				
+				<!-- 頁碼 -->
+				<div class="pageContainer"><p>頁數:</p>
+					<?php
+					for($i=1; $i <= $page_num; $i++ ){
+						if($i == $page){
+							echo "<div class='pageNow'>".$i."</div>";
+						}else{
+							echo "<div class='page'><a href='board.php?page=".$i."''>".$i."</a></div>";
+						}
+					}
+						?>
+				</div>
 			</div>
 		</div>
 	</body>
