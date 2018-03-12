@@ -70,8 +70,13 @@
 					$re_sql = "SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = '$comment_id' ORDER BY create_at DESC";
 					$re_result=mysqli_query($conn, $re_sql);
 					while ($re_row = mysqli_fetch_array ($re_result)){
+						if ($re_row['user_id'] == $row['user_id']){
+							$replyclass = '"replyCol selfReply"';
+						}else{
+							$replyclass = 'replyCol';
+						}
 				?>
-		<div class="replyCol">
+		<div class=<?php echo $replyclass; ?>>
 			<div class="inf">
 				<p class="whoComment"><?php echo $re_row['nickname']; ?></p>
 				<p class="time"><?php echo $re_row['create_at']; ?></p>

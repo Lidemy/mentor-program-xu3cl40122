@@ -181,7 +181,7 @@ a {
 }
 .modify_button:hover {
   cursor: pointer;
-  color: #1d92d6;
+  color: #000;
 }
 .modify_button:focus {
   outline: none;
@@ -227,4 +227,5 @@ a {
 }
 .selfReply {
   background: #006aa6;
+  color: #fff;
 }
