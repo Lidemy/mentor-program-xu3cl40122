@@ -108,6 +108,10 @@ a {
   position: absolute;
   right: 20px;
   bottom: 10px;
+  transition: color 0.3s ease-out;
+}
+.replyButton:hover {
+  color: #1d92d6;
 }
 .replyFormContainer {
   display: none;
@@ -153,4 +157,18 @@ a {
   color: #fff;
   display: inline-block;
   margin: 0px 3px;
+}
+.submit_button {
+  background: #006aa6;
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  font-family: Microsoft JhengHei, Arial, Helvetica, sans-serif;
+  transition: background 0.3s ease-out;
+}
+.submit_button:hover {
+  cursor: pointer;
+  background: #014f7b;
 }

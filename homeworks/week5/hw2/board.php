@@ -24,7 +24,7 @@
 				<form class="mainComment_form">
 					<h1>留言區</h1>
 					<textarea  class="mainComment" placeholder="想說什麼嗎?"></textarea>
-					<input type="submit" name="">
+					<input type="submit" name="" class="submit_button">
 					<input type="hidden" name="comment_id" value="0">
 				</form>
 			</div>
@@ -94,7 +94,8 @@
 						if($i == $page){
 							echo "<div class='pageNow'>".$i."</div>";
 						}else{
-							echo "<div class='page'><a href='board.php?page=".$i."''>".$i."</a></div>";
+							/*echo "<div class='page'><a href='board.php?page=".$i."''>".$i."</a></div>";*/
+							echo "<a href='board.php?page=".$i."'><div class='page'>".$i."</div></a>";
 						}
 					}
 						?>

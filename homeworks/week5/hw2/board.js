@@ -41,7 +41,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 	var replyButton = dqa('.replyButton')
 	for(var i =0; i < replyButton.length; i++){
 		replyButton[i].addEventListener('click', (e)=>{
-			e.target.previousElementSibling.style.display = 'block'
+                if(e.target.previousElementSibling.style.display == 'block'){
+                    e.target.previousElementSibling.style.display = 'none'
+                }else{
+                    e.target.previousElementSibling.style.display = 'block'
+                }			
 		})
 	}
 	// --- ajax 新增留言 ---
