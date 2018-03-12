@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     	alert('請先登入帳號')
     	document.location.href='signup.html'
     }
-    // --- 回覆表單 ---
+    // --- 回覆表單toggle ---
 	var replyButton = dqa('.replyButton')
 	for(var i =0; i < replyButton.length; i++){
 		replyButton[i].addEventListener('click', (e)=>{
@@ -79,7 +79,16 @@ document.addEventListener('DOMContentLoaded',()=>{
 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send('x='+j_data);
 }
-
+    // --- 修改留言 UI ---
+    var modify_button = dqa('.modify_button')
+    for(var i = 0; i < modify_button.length; i++){
+        modify_button[i].addEventListener('click',(e) =>{
+            e.target.nextElementSibling.style.display = 'block'
+        })
+        modify_button[i].addEventListener('focusout', (e) =>{
+            e.target.nextElementSibling.style.display = 'none'
+        })
+    }
 
 	// --- 主留言表單 ---
 	dq('.mainComment_form').addEventListener('submit', (e) =>{

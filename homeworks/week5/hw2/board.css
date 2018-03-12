@@ -76,6 +76,7 @@ a {
   width: 100%;
   border-bottom: 1px solid #dedede;
   padding: 10px 0px;
+  position: relative;
 }
 .inf {
   width: 100%;
@@ -99,9 +100,6 @@ a {
   border-radius: 10px;
   padding: 5px;
   margin-bottom: 10px;
-}
-.replyCol p {
-  margin: 0.5rem 0px;
 }
 .replyButton {
   cursor: pointer;
@@ -171,4 +169,51 @@ a {
 .submit_button:hover {
   cursor: pointer;
   background: #014f7b;
+}
+.modify_button {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  font-size: 1.5rem;
+  color: #797979;
+  transition: color 0.3s ease-out;
+}
+.modify_button:hover {
+  cursor: pointer;
+  color: #1d92d6;
+}
+.modify_button:focus {
+  outline: none;
+}
+.commentContent {
+  word-wrap: break-word;
+  margin-right: 75px;
+}
+.replyContent {
+  word-wrap: break-word;
+  margin-right: 75px;
+  margin-top: 0px;
+}
+.modify_navList {
+  position: absolute;
+  top: 65px;
+  right: 10px;
+  background: #fff;
+  z-index: 10;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  border-radius: 5px;
+  display: none;
+}
+.modify_navList ul {
+  margin: 0;
+  padding: 5px;
+  list-style: none;
+}
+.modify_navList li {
+  transition: color, background 0.2s ease-out;
+}
+.modify_navList li:hover {
+  background: #006aa6;
+  color: #fff;
+  cursor: pointer;
 }
