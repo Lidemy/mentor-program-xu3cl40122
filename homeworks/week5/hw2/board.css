@@ -100,6 +100,7 @@ a {
   border-radius: 10px;
   padding: 5px;
   margin-bottom: 10px;
+  position: relative;
 }
 .replyButton {
   cursor: pointer;
@@ -172,7 +173,7 @@ a {
 }
 .modify_button {
   position: absolute;
-  top: 40px;
+  top: 30px;
   right: 10px;
   font-size: 1.5rem;
   color: #797979;
@@ -196,7 +197,7 @@ a {
 }
 .modify_navList {
   position: absolute;
-  top: 65px;
+  top: 75px;
   right: 10px;
   background: #fff;
   z-index: 10;
@@ -216,4 +217,11 @@ a {
   background: #006aa6;
   color: #fff;
   cursor: pointer;
+}
+.editForm {
+  margin-bottom: 10px;
+}
+.editForm textarea {
+  width: 90%;
+  margin-right: 10%;
 }

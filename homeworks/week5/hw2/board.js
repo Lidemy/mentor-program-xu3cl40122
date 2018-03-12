@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                 }			
 		})
 	}
-	// --- ajax 新增留言 ---
+	// --- AJAX 新增留言 ---
 	const addComment = (e, isReply) => {
     var request = new XMLHttpRequest()
     request.open("POST", "addComment.php")
@@ -79,17 +79,74 @@ document.addEventListener('DOMContentLoaded',()=>{
 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send('x='+j_data);
 }
-    // --- 修改留言 UI ---
+    // --- AJAX 編輯、刪除留言 ---
+    const editComment = (event, isdelete) => {
+        var request = new XMLHttpRequest()
+        request.open("POST", "editComment.php")
+        if (isdelete) {
+            var editCommentData = {
+                'comment_id': event.target.previousElementSibling.value,
+                'type': 'delete'
+            }
+        } else {
+            var editCommentData = {
+                'comment_id': event.target.previousElementSibling.value,
+                'type': 'edit',
+                'newContent': event.target.childNodes[1].value
+            }
+        }
+
+        var j_data = JSON.stringify(editCommentData)
+        request.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.responseText == 'pass') {
+                    document.location.href = 'board.php'
+                } else {
+                    console.log(this.responseText)
+                }
+            }
+        }
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+        request.send('x=' + j_data)
+    }
+
+    // --- 修改留言button UI ---
     var modify_button = dqa('.modify_button')
     for(var i = 0; i < modify_button.length; i++){
         modify_button[i].addEventListener('click',(e) =>{
             e.target.nextElementSibling.style.display = 'block'
         })
         modify_button[i].addEventListener('focusout', (e) =>{
-            e.target.nextElementSibling.style.display = 'none'
+            setTimeout(()=>{
+                 e.target.nextElementSibling.style.display = 'none'
+             },400)
+           
         })
     }
-
+    // --- 修改留言 ---
+    var edit_button = dqa('.edit_button')
+    for (var i = 0; i < edit_button.length; i++) {
+        edit_button[i].addEventListener('click', (e) => {
+            var beForm = e.target.parentNode.parentNode.previousElementSibling.previousElementSibling
+            var comment_id = beForm
+            beForm.outerHTML = `
+                <form class="editForm">
+                    <textarea  class="replyComment">${beForm.innerText}</textarea>
+                    <input type="submit" name="" class="submit_button">
+                </form> `
+            var editForm = dqa('.editForm')
+            for (var i = 0; i < editForm.length; i++) {
+                editForm[i].addEventListener('submit', (event) => {
+                    event.preventDefault()
+                    editComment(event,false)
+                    //console.log(event.target.previousElementSibling.value)
+                    //console.log(event.target.childNodes[1].value)
+                })
+            }
+        })
+    }
+    
+    
 	// --- 主留言表單 ---
 	dq('.mainComment_form').addEventListener('submit', (e) =>{
 		e.preventDefault()

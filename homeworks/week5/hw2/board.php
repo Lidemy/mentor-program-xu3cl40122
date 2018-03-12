@@ -53,11 +53,12 @@
 			<p class="whoComment"><?php echo $row['nickname']; ?></p>
 			<p class="time"><?php echo $row['create_at']; ?></p>
 		</div>
+		<input type="hidden" value=<?php echo $row['comment_id'] ?>>
 		<p class="commentContent"><?php echo $row['content']; ?></p>
 		<div class="modify_button"  tabindex="100">...</div>
 		<div class="modify_navList">
 				<ul>
-					<li><i class="fa fa-pencil icon"></i>編輯</li>
+					<li class="edit_button"><i class="fa fa-pencil icon"></i>編輯</li>
 					<li><i class="fa fa-times icon"></i>刪除</li>
 				</ul>
 			</div>
@@ -75,10 +76,16 @@
 				<p class="whoComment"><?php echo $re_row['nickname']; ?></p>
 				<p class="time"><?php echo $re_row['create_at']; ?></p>
 			</div>
+			<input type="hidden" value=<?php echo $re_row['comment_id']; ?> name="comment_id">
 			<p class="replyContent"><?php echo $re_row['content']; ?></p>
+			<div class="modify_button"  tabindex="100">...</div>
+		<div class="modify_navList">
+				<ul>
+					<li class="edit_button"><i class="fa fa-pencil icon"></i>編輯</li>
+					<li><i class="fa fa-times icon"></i>刪除</li>
+				</ul>
+			</div>
 		</div>
-	
-
 			<?php
 				}
 				?>
