@@ -39,11 +39,12 @@ if ($type == 'delete'){
 	    echo "Error updating record: " . $conn->error;
 	}	
 $conn->close();
-}else{
+}
+else{
 	include('connect.php');
 	$sql = "UPDATE xu3cl40122_comment SET content ='$newContent' WHERE comment_id = $comment_id";
 	if ($conn->query($sql) === TRUE) {
-    	echo $sql;
+    	echo 'pass';
 	} else {
 	    echo "Error updating record: " . $conn->error;
 	}	

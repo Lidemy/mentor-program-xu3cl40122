@@ -59,7 +59,7 @@
 		<div class="modify_navList">
 				<ul>
 					<li class="edit_button"><i class="fa fa-pencil icon"></i>編輯</li>
-					<li><i class="fa fa-times icon"></i>刪除</li>
+					<li class="delete_button"><i class="fa fa-times icon"></i>刪除</li>
 				</ul>
 			</div>
 		<div class="replyContainer">
@@ -82,7 +82,7 @@
 		<div class="modify_navList">
 				<ul>
 					<li class="edit_button"><i class="fa fa-pencil icon"></i>編輯</li>
-					<li><i class="fa fa-times icon"></i>刪除</li>
+					<li class="delete_button"><i class="fa fa-times icon"></i>刪除</li>
 				</ul>
 			</div>
 		</div>

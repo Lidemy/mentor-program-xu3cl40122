@@ -85,8 +85,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         request.open("POST", "editComment.php")
         if (isdelete) {
             var editCommentData = {
-                'comment_id': event.target.previousElementSibling.value,
-                'type': 'delete'
+                'comment_id': event.target.parentNode.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.value,
+                'type': 'delete',
+                'newContent' : 'none'
             }
         } else {
             var editCommentData = {
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                 if (this.responseText == 'pass') {
                     document.location.href = 'board.php'
                 } else {
-                    console.log(this.responseText)
+                    alert(this.responseText)
                 }
             }
         }
@@ -139,9 +140,17 @@ document.addEventListener('DOMContentLoaded',()=>{
                 editForm[i].addEventListener('submit', (event) => {
                     event.preventDefault()
                     editComment(event,false)
-                    //console.log(event.target.previousElementSibling.value)
-                    //console.log(event.target.childNodes[1].value)
+                    
                 })
+            }
+        })
+    }
+    // --- 刪除留言 ---
+    var delete_button = dqa('.delete_button')
+    for(var i = 0; i < delete_button.length; i++){
+        delete_button[i].addEventListener('click',(e)=>{
+            if(confirm('確定要刪除留言?')){
+                editComment(e,true)
             }
         })
     }
