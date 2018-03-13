@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="normalize.css">
 		<link rel="stylesheet" type="text/css" href="board.css">
 		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
@@ -24,7 +25,7 @@
 				<form class="mainComment_form">
 					<h1>留言區</h1>
 					<textarea  class="mainComment" placeholder="想說什麼嗎?"></textarea>
-					<input type="submit" name="">
+					<input type="submit" name="" class="submit_button">
 					<input type="hidden" name="comment_id" value="0">
 				</form>
 			</div>
@@ -52,7 +53,15 @@
 			<p class="whoComment"><?php echo $row['nickname']; ?></p>
 			<p class="time"><?php echo $row['create_at']; ?></p>
 		</div>
+		<input type="hidden" value=<?php echo $row['comment_id'] ?>>
 		<p class="commentContent"><?php echo $row['content']; ?></p>
+		<div class="modify_button"  tabindex="100">...</div>
+		<div class="modify_navList">
+				<ul>
+					<li class="edit_button"><i class="fa fa-pencil icon"></i>編輯</li>
+					<li class="delete_button"><i class="fa fa-times icon"></i>刪除</li>
+				</ul>
+			</div>
 		<div class="replyContainer">
 	
 				<!--串子留言-->
@@ -61,23 +70,34 @@
 					$re_sql = "SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = '$comment_id' ORDER BY create_at DESC";
 					$re_result=mysqli_query($conn, $re_sql);
 					while ($re_row = mysqli_fetch_array ($re_result)){
+						if ($re_row['user_id'] == $row['user_id']){
+							$replyclass = '"replyCol selfReply"';
+						}else{
+							$replyclass = 'replyCol';
+						}
 				?>
-		<div class="replyCol">
+		<div class=<?php echo $replyclass; ?>>
 			<div class="inf">
 				<p class="whoComment"><?php echo $re_row['nickname']; ?></p>
 				<p class="time"><?php echo $re_row['create_at']; ?></p>
 			</div>
+			<input type="hidden" value=<?php echo $re_row['comment_id']; ?> name="comment_id">
 			<p class="replyContent"><?php echo $re_row['content']; ?></p>
+			<div class="modify_button"  tabindex="100">...</div>
+		<div class="modify_navList">
+				<ul>
+					<li class="edit_button"><i class="fa fa-pencil icon"></i>編輯</li>
+					<li class="delete_button"><i class="fa fa-times icon"></i>刪除</li>
+				</ul>
+			</div>
 		</div>
-	
-
 			<?php
 				}
 				?>
 		<div class="replyFormContainer">
 			<form class="replyForm">
 				<textarea  class="replyComment" placeholder="想說什麼嗎?"></textarea>
-				<input type="submit" name="">
+				<input type="submit" name="" class="submit_button">
 				<input type="hidden" name="comment_id" value=<?php echo $row['comment_id'];?>>
 			</form>
 		</div>
@@ -94,7 +114,8 @@
 						if($i == $page){
 							echo "<div class='pageNow'>".$i."</div>";
 						}else{
-							echo "<div class='page'><a href='board.php?page=".$i."''>".$i."</a></div>";
+							/*echo "<div class='page'><a href='board.php?page=".$i."''>".$i."</a></div>";*/
+							echo "<a href='board.php?page=".$i."'><div class='page'>".$i."</div></a>";
 						}
 					}
 						?>
