@@ -20,9 +20,9 @@ function signUp(){
 	include('connect.php');
 	header("Content-Type: application/json; charset=UTF-8");
 	$obj = json_decode($_POST["x"], false);
-
+	$hash_pwd = password_hash($obj->pwd, PASSWORD_DEFAULT);
 	$sql = "INSERT INTO xu3cl40122_users (email, password, nickname)
-	VALUES ('$obj->email', '$obj->pwd', '$obj->nickname')";
+	VALUES ('$obj->email', '$hash_pwd', '$obj->nickname')";
 
 	if ($conn->query($sql) === TRUE) {
 	    echo "pass";
