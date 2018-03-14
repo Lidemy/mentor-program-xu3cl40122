@@ -22,9 +22,10 @@ function getCookie(cname) {
 $(document).ready(function(){
 	//display cookie
 	var user = getCookie("board_member_id")
+	var r_id = getCookie('board_random_id')
 	if (user != "") {
-        alert("Welcome " + user);
-        document.location.href='board.php'
+        alert("Welcome" + r_id);
+        //document.location.href='board.php'
     }
     else{
     	alert('noin')
