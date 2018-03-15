@@ -18,6 +18,7 @@ function getCookie(cname) {
     }
     return "";
 }
+
 function delete_cookie(cookie_name)
 {
   var cookie_date = new Date ( );  // current date & time
@@ -25,10 +26,24 @@ function delete_cookie(cookie_name)
   document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
 } 
 
+const identify = () =>{
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            if(this.responseText != 'pass'){
+                alert('權限問題!!')
+                document.location.href = 'signup.html'
+            }
+        }
+    }
+    xmlhttp.open("GET", "identify.php", true);
+    xmlhttp.send();
+}
 
 
 document.addEventListener('DOMContentLoaded',()=>{
 	// --- 登入判斷 ---
+    identify()
 	var user = getCookie("board_member_id")
 	if (user != "") {
         dq('.navBar_username').innerText = user
