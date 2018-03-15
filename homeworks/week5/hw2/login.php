@@ -15,7 +15,7 @@ $result = $conn->query($sql);
         	$random_id = $t.'AT'.$r;
         	setcookie("board_random_id",$random_id, time()+3600*24);
         	$nickname = $row['nickname'];
-        	$ra_sql = "INSERT INTO users_certificate (id, nickname) VALUES('$random_id', '$nickname') ON DUPLICATE KEY UPDATE id='$random_id', nickname='$nickname'";
+        	$ra_sql = "INSERT INTO xu3cl40122_users_certificate (id, nickname) VALUES('$random_id', '$nickname') ON DUPLICATE KEY UPDATE id='$random_id', nickname='$nickname'";
         	if($conn->query($ra_sql) === TRUE){
         		echo 'pass';
         	}else{
