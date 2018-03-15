@@ -25,10 +25,7 @@ $(document).ready(function(){
 	var r_id = getCookie('board_random_id')
 	if (user != "") {
         alert("Welcome" + r_id);
-        //document.location.href='board.php'
-    }
-    else{
-    	alert('noin')
+        document.location.href='board.php'
     }
 	//--- switch animation ---
 	$("#log").click(function() {
