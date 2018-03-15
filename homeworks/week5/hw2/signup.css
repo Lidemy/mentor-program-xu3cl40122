@@ -114,3 +114,6 @@ input {
   background: #dc502f;
   margin-left: 300px;
 }
+input[type="submit"] {
+  cursor: pointer;
+}
