@@ -10,13 +10,26 @@
 		<script type="text/javascript" src="board.js"></script>
 		<title>留言板</title>
 	</head>
+	<!--- check cookie -->
+	<?php
+	$random_id = $_COOKIE['board_random_id'];
+	include('connect.php');
+	$us_sql = "SELECT * FROM xu3cl40122_users_certificate where id = '$random_id' ";
+	$us_result = $conn->query($us_sql);
+	if ($us_result->num_rows > 0){
+		$us_row = $us_result->fetch_assoc();
+	}else{
+		setcookie("board_random_id","", time()+3600*24);
+		header('Location:signup.html');
+	}
+	?>
 	<body>
 		<!-- navBar -->
 		<div class="navbar">
 			<div class="logo"><h1>iDearcard</h1></div>
 			<div class="navList">
 				<div class="navButton logout">登出</div>
-				<div class="navButton navBar_username">登入</div>
+				<div class="navButton navBar_username"><?php echo $us_row['nickname'];  ?></div>
 			</div>
 		</div>
 		<div class="container">

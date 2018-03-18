@@ -4,14 +4,15 @@ include('connect.php');
 
 header("Content-Type: application/json; charset=UTF-8");
 $obj = json_decode($_POST["x"], false);
-/*
-$obj = new stdClass();
-$obj->user = 'admin';
-$obj->content = '777';
-$obj->parent_id = 1;
-*/
-$sql = "SELECT * FROM xu3cl40122_users WHERE nickname = '$obj->user'";
-$result = $conn->query($sql);
+// identify
+$board_random_id =  $_COOKIE['board_random_id'];
+$id_sql = "SELECT * FROM xu3cl40122_users_certificate where id = '$board_random_id' ";
+$id_result = $conn->query($id_sql);
+if($id_result->num_rows > 0){
+	$id_row = $id_result->fetch_assoc();
+	$nickname = $id_row['nickname'];
+	$sql = "SELECT * FROM xu3cl40122_users WHERE nickname = '$nickname'";
+	$result = $conn->query($sql);
     if ($result->num_rows > 0){
         $row = $result->fetch_assoc();
         $sid = $row['sid'];
@@ -23,6 +24,12 @@ $result = $conn->query($sql);
 		    echo "Error: " . $sql . "<br>" . $conn->error;
 		}
     }
+}
+else{
+	echo '權限問題';
+}
+
+
 $conn->close();
 
 ?>

@@ -21,9 +21,8 @@ function getCookie(cname) {
 
 $(document).ready(function(){
 	//display cookie
-	var user = getCookie("board_member_id")
 	var r_id = getCookie('board_random_id')
-	if (user != "") {
+	if (r_id != "") {
         alert("Welcome" + r_id);
         document.location.href='board.php'
     }
