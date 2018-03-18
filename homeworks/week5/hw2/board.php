@@ -63,11 +63,11 @@
 				?>
 	<div class="col">
 		<div class="inf">
-			<p class="whoComment"><?php echo $row['nickname']; ?></p>
+			<p class="whoComment"><?php echo htmlspecialchars($row['nickname'], ENT_QUOTES, 'utf-8'); ?></p>
 			<p class="time"><?php echo $row['create_at']; ?></p>
 		</div>
 		<input type="hidden" value=<?php echo $row['comment_id'] ?>>
-		<p class="commentContent"><?php echo $row['content']; ?></p>
+		<p class="commentContent"><?php echo htmlspecialchars($row['content'], ENT_QUOTES, 'utf-8'); ?></p>
 		<div class="modify_button"  tabindex="100">...</div>
 		<div class="modify_navList">
 				<ul>
@@ -91,11 +91,11 @@
 				?>
 		<div class=<?php echo $replyclass; ?>>
 			<div class="inf">
-				<p class="whoComment"><?php echo $re_row['nickname']; ?></p>
+				<p class="whoComment"><?php echo htmlspecialchars($re_row['nickname'],ENT_QUOTES, 'utf-8'); ?></p>
 				<p class="time"><?php echo $re_row['create_at']; ?></p>
 			</div>
 			<input type="hidden" value=<?php echo $re_row['comment_id']; ?> name="comment_id">
-			<p class="replyContent"><?php echo $re_row['content']; ?></p>
+			<p class="replyContent"><?php echo htmlspecialchars($re_row['content'],ENT_QUOTES, 'utf-8'); ?></p>
 			<div class="modify_button"  tabindex="100">...</div>
 		<div class="modify_navList">
 				<ul>
