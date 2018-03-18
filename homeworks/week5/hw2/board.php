@@ -29,7 +29,7 @@
 			<div class="logo"><h1>iDearcard</h1></div>
 			<div class="navList">
 				<div class="navButton logout">登出</div>
-				<div class="navButton navBar_username"><?php echo $us_row['nickname'];  ?></div>
+				<div class="navButton navBar_username"><?php echo htmlspecialchars($us_row['nickname'],ENT_QUOTES, 'utf-8');  ?></div>
 			</div>
 		</div>
 		<div class="container">

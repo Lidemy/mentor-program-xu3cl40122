@@ -16,13 +16,11 @@ if($id_result->num_rows > 0){
     if ($result->num_rows > 0){
         $row = $result->fetch_assoc();
         $sid = $row['sid'];
-        $add_sql = "INSERT INTO xu3cl40122_comment (parent_id, content, user_id)
-		VALUES ('$obj->parent_id', '$obj->content', '$sid')";
-		if ($conn->query($add_sql) === TRUE) {
-		    echo "pass";
-		} else {
-		    echo "Error: " . $sql . "<br>" . $conn->error;
-		}
+		$stmt = $conn->prepare("INSERT INTO xu3cl40122_comment (parent_id, content, user_id) VALUES (?, ?, ?)");
+		$stmt->bind_param('isi',$obj->parent_id, $obj->content, $sid);
+		$stmt->execute() or trigger_error($stmt->error, E_USER_ERROR);
+		echo "pass";
+		$stmt->close();
     }
 }
 else{

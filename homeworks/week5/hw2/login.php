@@ -3,8 +3,12 @@ include('connect.php');
 header("Content-Type: application/json; charset=UTF-8");
 $obj = json_decode($_POST["x"], false);
 
-$sql = "SELECT * FROM xu3cl40122_users where email = '$obj->email'";
-$result = $conn->query($sql);
+//$sql = "SELECT * FROM xu3cl40122_users where email = ?";
+//$result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM xu3cl40122_users where email = ?");
+    $stmt->bind_param('s',$obj->email);
+    $stmt->execute();
+    $result = $stmt->get_result();
     if ($result->num_rows > 0){
         $row = $result->fetch_assoc();
         if(password_verify($obj->pwd, $row['password'])){

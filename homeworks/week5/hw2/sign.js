@@ -117,7 +117,10 @@ $(document).ready(function(){
 	//--- login form check ---
 	dq('.logIn').addEventListener('submit',(e) =>{
 		e.preventDefault()
-		var accountData = {'email':dq('.login_email').value,'pwd':dq('.login_password').value}
+        var accountData = {
+            'email': dq('.login_email').value,
+            'pwd': dq('.login_password').value
+        }
 		var j_data = JSON.stringify(accountData)
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function(){

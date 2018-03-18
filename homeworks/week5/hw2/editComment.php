@@ -9,11 +9,14 @@ function edit($newContent ,$comment_id ,$random_id){
 		$id_row = $id_result->fetch_assoc();
 		//如果是 進行修改
 		if ($id_row['id'] == $random_id){
-			$sql = "UPDATE xu3cl40122_comment SET content ='$newContent' WHERE comment_id = $comment_id";
-			if ($conn->query($sql) === TRUE) {
-		    	echo "pass";
-			} else {
-			    echo "Error updating record: " . $conn->error;
+			//$sql = "UPDATE xu3cl40122_comment SET content ='$newContent' WHERE comment_id = $comment_id";
+			$stmt = $conn->prepare("UPDATE xu3cl40122_comment SET content = ? WHERE comment_id = $comment_id");
+			$stmt->bind_param('s',$newContent);
+			$status = $stmt->execute();
+			if ($status === false) {
+			  trigger_error($stmt->error, E_USER_ERROR);
+			}else{
+				echo "pass";
 			}
 		}
 		else{

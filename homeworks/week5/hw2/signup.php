@@ -6,8 +6,11 @@ function typingCheck(){
 	$type = $_REQUEST['type'];
 	$value = $_REQUEST['value'];
 
-	$sql = "SELECT * FROM xu3cl40122_users where $type = '$value'";
-	$result = $conn->query($sql);
+	//$sql = "SELECT * FROM xu3cl40122_users where $type = '$value'";
+	$stmt = $conn->prepare("SELECT * FROM xu3cl40122_users where $type = ?");
+	$stmt->bind_param('s',$value);
+	$stmt->execute();
+    $result = $stmt->get_result();
 	if ($result->num_rows > 0){
 	    echo "nopass";
 	}
@@ -21,15 +24,15 @@ function signUp(){
 	header("Content-Type: application/json; charset=UTF-8");
 	$obj = json_decode($_POST["x"], false);
 	$hash_pwd = password_hash($obj->pwd, PASSWORD_DEFAULT);
-	$sql = "INSERT INTO xu3cl40122_users (email, password, nickname)
+	/*$sql = "INSERT INTO xu3cl40122_users (email, password, nickname)
 	VALUES ('$obj->email', '$hash_pwd', '$obj->nickname')";
-
-	if ($conn->query($sql) === TRUE) {
-	    echo "pass";
-	} else {
-	    echo "Error: " . $sql . "<br>" . $conn->error;
-	}
-
+	*/
+	$stmt = $conn->prepare("INSERT INTO xu3cl40122_users (email, password, nickname)
+	VALUES (?, ?, ?)");
+	$stmt->bind_param('sss',$obj->email, $hash_pwd, $obj->nickname);
+	$stmt->execute() or trigger_error($stmt->error, E_USER_ERROR);
+	echo "pass";
+	$stmt->close();
 	$conn->close();
 }
 
