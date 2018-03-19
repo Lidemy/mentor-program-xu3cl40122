@@ -3,15 +3,16 @@
 function edit($newContent ,$comment_id ,$random_id){
 	//確認是否是修改自己的留言
 	include('connect.php');
-	$id_sql = "SELECT c.comment_id, c.content, u.nickname, uc.id FROM xu3cl40122_comment AS c INNER JOIN xu3cl40122_users AS u ON user_id = sid INNER JOIN xu3cl40122_users_certificate AS uc ON uc.nickname = u.nickname WHERE c.comment_id = '$comment_id'";
-	$id_result = $conn->query($id_sql);
+	$id_stmt = $conn->prepare("SELECT c.comment_id, c.content, u.nickname, uc.id FROM xu3cl40122_comment AS c INNER JOIN xu3cl40122_users AS u ON user_id = sid INNER JOIN xu3cl40122_users_certificate AS uc ON uc.nickname = u.nickname WHERE c.comment_id = ?");
+	$id_stmt->bind_param('i',$comment_id);
+	$id_stmt->execute();
+	$id_result = $id_stmt->get_result();
 	if($id_result->num_rows > 0){
 		$id_row = $id_result->fetch_assoc();
 		//如果是 進行修改
 		if ($id_row['id'] == $random_id){
-			//$sql = "UPDATE xu3cl40122_comment SET content ='$newContent' WHERE comment_id = $comment_id";
-			$stmt = $conn->prepare("UPDATE xu3cl40122_comment SET content = ? WHERE comment_id = $comment_id");
-			$stmt->bind_param('s',$newContent);
+			$stmt = $conn->prepare("UPDATE xu3cl40122_comment SET content = ? WHERE comment_id = ?");
+			$stmt->bind_param('si',$newContent, $comment_id);
 			$status = $stmt->execute();
 			if ($status === false) {
 			  trigger_error($stmt->error, E_USER_ERROR);
@@ -32,8 +33,10 @@ $conn->close();
 function delete($comment_id ,$random_id){
 	//確認是否是刪除自己的留言
 	include('connect.php');
-	$id_sql = "SELECT c.comment_id, c.content, u.nickname, uc.id FROM xu3cl40122_comment AS c INNER JOIN xu3cl40122_users AS u ON user_id = sid INNER JOIN xu3cl40122_users_certificate AS uc ON uc.nickname = u.nickname WHERE c.comment_id = '$comment_id'";
-	$id_result = $conn->query($id_sql);
+	$id_stmt = $conn->prepare("SELECT c.comment_id, c.content, u.nickname, uc.id FROM xu3cl40122_comment AS c INNER JOIN xu3cl40122_users AS u ON user_id = sid INNER JOIN xu3cl40122_users_certificate AS uc ON uc.nickname = u.nickname WHERE c.comment_id = ?");
+	$id_stmt->bind_param('i',$comment_id);
+	$id_stmt->execute();
+	$id_result = $id_stmt->get_result();
 	if($id_result->num_rows > 0){
 		$id_row = $id_result->fetch_assoc();
 		//如果是 進行刪除

@@ -5,8 +5,6 @@ function typingCheck(){
 	include('connect.php');
 	$type = $_REQUEST['type'];
 	$value = $_REQUEST['value'];
-
-	//$sql = "SELECT * FROM xu3cl40122_users where $type = '$value'";
 	$stmt = $conn->prepare("SELECT * FROM xu3cl40122_users where $type = ?");
 	$stmt->bind_param('s',$value);
 	$stmt->execute();
@@ -24,9 +22,6 @@ function signUp(){
 	header("Content-Type: application/json; charset=UTF-8");
 	$obj = json_decode($_POST["x"], false);
 	$hash_pwd = password_hash($obj->pwd, PASSWORD_DEFAULT);
-	/*$sql = "INSERT INTO xu3cl40122_users (email, password, nickname)
-	VALUES ('$obj->email', '$hash_pwd', '$obj->nickname')";
-	*/
 	$stmt = $conn->prepare("INSERT INTO xu3cl40122_users (email, password, nickname)
 	VALUES (?, ?, ?)");
 	$stmt->bind_param('sss',$obj->email, $hash_pwd, $obj->nickname);

@@ -14,8 +14,10 @@
 	<?php
 	$random_id = $_COOKIE['board_random_id'];
 	include('connect.php');
-	$us_sql = "SELECT * FROM xu3cl40122_users_certificate where id = '$random_id' ";
-	$us_result = $conn->query($us_sql);
+	$us_stmt = $conn->prepare("SELECT * FROM xu3cl40122_users_certificate where id =?");
+	$us_stmt->bind_param('s',$random_id);
+	$us_stmt->execute();
+	$us_result = $us_stmt->get_result();
 	if ($us_result->num_rows > 0){
 		$us_row = $us_result->fetch_assoc();
 	}else{
@@ -52,13 +54,15 @@
 					}else{
 						$page = intval($_GET['page']);
 					}
-					$page_sql = "SELECT COUNT(`comment_id`) FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = 0 ORDER BY create_at DESC" ;
-					$page_result = mysqli_query($conn, $page_sql);
+					$page_stmt = $conn->prepare("SELECT COUNT(`comment_id`) FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = 0 ORDER BY create_at DESC");
+					$page_stmt->execute();
+					$page_result = $page_stmt->get_result();
 					$page_row = mysqli_fetch_array ($page_result);
 					$page_num = ceil($page_row[0]/10);
 					$a = intval(($page-1)*10);
-					$sql = "SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = 0 ORDER BY create_at DESC LIMIT $a,10";
-					$result=mysqli_query($conn, $sql);
+					$stmt = $conn->prepare("SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = 0 ORDER BY create_at DESC LIMIT $a,10");
+					$stmt->execute();
+					$result = $stmt->get_result();
 					while ($row = mysqli_fetch_array ($result)){
 				?>
 	<div class="col">
@@ -80,8 +84,10 @@
 				<!--串子留言-->
 				<?php
 					$comment_id = $row['comment_id']; 
-					$re_sql = "SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = '$comment_id' ORDER BY create_at DESC";
-					$re_result=mysqli_query($conn, $re_sql);
+					$re_stmt = $conn->prepare("SELECT *FROM xu3cl40122_comment JOIN xu3cl40122_users ON xu3cl40122_comment.user_id = xu3cl40122_users.sid  WHERE parent_id = ? ORDER BY create_at DESC");
+					$re_stmt->bind_param('i',$comment_id);
+					$re_stmt->execute();
+					$re_result = $re_stmt->get_result();
 					while ($re_row = mysqli_fetch_array ($re_result)){
 						if ($re_row['user_id'] == $row['user_id']){
 							$replyclass = '"replyCol selfReply"';
