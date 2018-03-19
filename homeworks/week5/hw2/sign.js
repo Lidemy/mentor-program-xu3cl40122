@@ -21,9 +21,8 @@ function getCookie(cname) {
 
 $(document).ready(function(){
 	//display cookie
-	var user = getCookie("board_member_id")
 	var r_id = getCookie('board_random_id')
-	if (user != "") {
+	if (r_id != "") {
         alert("Welcome" + r_id);
         document.location.href='board.php'
     }
@@ -118,7 +117,10 @@ $(document).ready(function(){
 	//--- login form check ---
 	dq('.logIn').addEventListener('submit',(e) =>{
 		e.preventDefault()
-		var accountData = {'email':dq('.login_email').value,'pwd':dq('.login_password').value}
+        var accountData = {
+            'email': dq('.login_email').value,
+            'pwd': dq('.login_password').value
+        }
 		var j_data = JSON.stringify(accountData)
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function(){

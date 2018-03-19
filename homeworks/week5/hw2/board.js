@@ -30,9 +30,12 @@ const identify = () =>{
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){
-            if(this.responseText != 'pass'){
+            if(this.responseText == 'not_found_users_certificate'){
                 alert('權限問題!!')
                 document.location.href = 'signup.html'
+            }
+            else{
+                var user = this.responseText
             }
         }
     }
@@ -43,15 +46,7 @@ const identify = () =>{
 
 document.addEventListener('DOMContentLoaded',()=>{
 	// --- 登入判斷 ---
-    identify()
-	var user = getCookie("board_member_id")
-	if (user != "") {
-        dq('.navBar_username').innerText = user
-    }
-    else{
-    	alert('請先登入帳號')
-    	document.location.href='signup.html'
-    }
+
     // --- 回覆表單toggle ---
 	var replyButton = dqa('.replyButton')
 	for(var i =0; i < replyButton.length; i++){
@@ -69,13 +64,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     request.open("POST", "addComment.php")
     if (isReply) {
         var commentData = {
-            'user': user,
             'content': e.target.previousSibling.nextSibling.childNodes[1].value,
             'parent_id': e.target.previousSibling.nextSibling.childNodes[5].value
         }
     }else{
     	var commentData = {
-            'user': user,
             'content': e.target.previousSibling.nextSibling.childNodes[3].value,
             'parent_id': 0
         }
@@ -186,7 +179,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	}
 	// --- log out ---
 	dq('.logout').addEventListener('click',()=>{
-		delete_cookie("board_member_id")
+		delete_cookie("board_random_id")
 		document.location.href='signup.html'
 	})
 
