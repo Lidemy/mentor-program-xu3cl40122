@@ -23,8 +23,9 @@ PHP 有 htmlspecialchars($str, ENT_QUOTES, ‘utf-8’) 這個 function 可以�
 
 ## 請舉出三種不同的雜湊函數
 hash 簡單來說就是把無限長度的輸入轉成有限長度的輸出，是一個單向函式，好的 hash 即使輸入只差一點點輸出卻會差很多，且少有碰撞(collision)。    
-PHP 有提供 `password_hash()` `password_verify()` 做密碼儲存及驗證，預設會隨機選一種salt(加密方法?)增加被破解的難度，其他還有MD5, SHA-1, SHA-256,
+PHP 有提供 `password_hash()` `password_verify()` 做密碼儲存及驗證，預設會隨機選一種salt增加被破解的難度，其他還有MD5, SHA-1, SHA-256,
 bcrypt等，其中 MD5 已經不安全，不過可以用來產生亂數。
+* salt : 就是加鹽的概念，如果本來的密碼為 123 加鹽之後變成 123asd 再去做 hash 即使被駭客破解也猜不到哪部分是鹽哪部分是真的密碼
 
 
 ## 請去查什麼是 Session，以及 Session 跟 Cookie 的差別
