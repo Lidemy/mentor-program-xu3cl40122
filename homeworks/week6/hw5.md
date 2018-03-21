@@ -35,3 +35,6 @@ session機制 :
 session vs cookie
 cookie 指瀏覽器為了解決HTTP的無狀態性，而設計來儲存一些用戶資訊以優化使用者體驗的空間，儲存在使用者端的硬碟或記憶體，由瀏覽器管理，在發送request時會自動將對應的 cookie 一起傳上去 sever     
 session 應該是指前面提到的換證機制，要實作出這種機制有需多方法，可以把 session 存在記憶體、cookie、資料庫等地方，其中 PHP 已經有內建的 session 可以用
+
+## `include`、`require`、`include_once`、`require_once` 的差別
+
