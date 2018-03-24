@@ -3,6 +3,7 @@
 }
 body {
   background: #e3e9ff;
+  padding-bottom: 100px;
 }
 .block {
   border: 1px solid #000;
@@ -12,17 +13,104 @@ body {
   background: #af7eeb;
   color: #fff;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 30px 0px 30px 0px;
+  box-shadow: 0px 1px 13px 1px rgba(0,0,0,0.1);
 }
 .thing_container {
   border-bottom: 1px solid rgba(128,128,128,0.29);
   width: 100%;
   padding: 10px 0px;
+  display: inline-flex;
+  align-items: center;
+}
+.thing_container p {
+  margin: 0px 10px;
+}
+.thing_container i {
+  display: none;
+}
+.thing_container-done .circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #b7b7b7;
+  background: #af7eeb;
+}
+.thing_container-done .task {
+  text-decoration: line-through;
+}
+.thing_container-done i {
+  display: block;
+}
+.thing_container-done i:hover {
+  cursor: pointer;
 }
 .list_back {
   background: #fff;
   padding: 10px 10px;
+  box-shadow: 0px 1px 13px 1px rgba(0,0,0,0.1);
+  padding: 20px 50px 60px 50px;
+  position: relative;
 }
 .firstLine {
   border-bottom: 1px solid rgba(128,128,128,0.29);
+}
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #b7b7b7;
+  transition: background 0.3s ease-out;
+}
+.circle:hover {
+  background: #af7eeb;
+  cursor: pointer;
+}
+.add_button {
+  width: 140px;
+  height: 50px;
+  background: #af7eeb;
+  border-radius: 20px;
+  box-shadow: 0px 1px 13px 1px rgba(0,0,0,0.1);
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: -25px;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #fff;
+  border: 2px solid #af7eeb;
+  transition: 0.3s background, cloor ease-out;
+}
+.add_button:hover {
+  color: #af7eeb;
+  background: #fff;
+  cursor: pointer;
+}
+.add_button p {
+  margin: 0 0 0 5px;
+}
+.add_task_form {
+  margin-top: 30px;
+}
+.add_task_form input[type="text"] {
+  width: 100%;
+  border: 1px solid rgba(0,0,0,0.4);
+  border-radius: 3px;
+}
+.add_task_form input[type = "submit"] {
+  margin-right: 10px;
+}
+.display-none {
+  display: none;
+}
+.submit_container {
+  display: inline-flex;
+  aligm-items: center;
+  margin: 10px 0px;
+}
+.submit_container p {
+  margin: 0px;
 }

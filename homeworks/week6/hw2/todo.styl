@@ -2,6 +2,7 @@
 	box-sizing border-box
 body 
 	background rgb(227,233,255)
+	padding-bottom 100px
 .block 
 	border 1px solid black
 	height 20px	
@@ -9,13 +10,85 @@ body
 	background rgb(175,126,235)
 	color white
 	text-align center
-	margin-bottom 20px
+	margin 30px 0px 30px 0px
+	box-shadow  0px 1px 13px 1px rgba(0,0,0,0.1)
 .thing_container
 	border-bottom 1px solid #8080804a
 	width 100%
 	padding 10px 0px
+	display inline-flex
+	align-items center
+	p 
+		margin 0px 10px
+	i 
+		display none
+.thing_container-done 
+	.circle
+		width 15px
+		height 15px 
+		border-radius 50%
+		border 2px solid #b7b7b7
+		background rgb(175,126,235)
+	.task 
+		text-decoration line-through
+	i 
+		display block
+		&:hover 
+			cursor pointer
+			
 .list_back
 	background white
 	padding 10px 10px
+	box-shadow 0px 1px 13px 1px rgba(0,0,0,0.1)
+	padding 20px 50px 60px 50px
+	position relative
 .firstLine 
 	border-bottom 1px solid #8080804a
+.circle
+	width 15px
+	height 15px 
+	border-radius 50%
+	border 2px solid #b7b7b7
+	transition background 0.3s ease-out
+	&:hover
+		background rgb(175,126,235)
+		cursor pointer
+.add_button
+	width 140px
+	height 50px
+	background rgb(175,126,235)
+	border-radius 20px
+	box-shadow  0px 1px 13px 1px rgba(0,0,0,0.1)
+	position absolute
+	transform translateX(-50%)
+	bottom -25px
+	left 50%
+	display inline-flex 
+	align-items center
+	justify-content center
+	font-size 1.1rem
+	color white
+	border 2px solid rgb(175,126,235)
+	transition 0.3s background,cloor ease-out
+	&:hover 
+		color rgb(175,126,235)
+		background white
+		cursor pointer
+	p 
+		margin 0 0 0 5px
+.add_task_form 
+	margin-top 30px
+	input[type="text"]
+		width 100%
+		border 1px solid #00000066
+		border-radius 3px
+	input[type = "submit"]
+		margin-right 10px	
+.display-none
+	display none
+.submit_container 
+	display inline-flex 
+	aligm-items center
+	margin 10px 0px
+	p 
+		margin 0px
