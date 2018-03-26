@@ -17,11 +17,13 @@ function edit($newContent ,$comment_id ,$random_id){
 			if ($status === false) {
 			  trigger_error($stmt->error, E_USER_ERROR);
 			}else{
-				echo "pass";
+				$arr = array('result'=>'success');
+				echo json_encode($arr);
 			}
 		}
 		else{
-			echo "無權限修改該留言";
+			$arr = array('result'=>'notYour');
+			echo json_encode($arr);
 		}
 		
 	}
@@ -43,13 +45,15 @@ function delete($comment_id ,$random_id){
 		if ($id_row['id'] == $random_id){
 			$sql = "DELETE FROM xu3cl40122_comment WHERE comment_id= $comment_id";
 			if ($conn->query($sql) === TRUE) {
-		    	echo "pass";
+		    	$arr = array('result'=>'success');
+				echo json_encode($arr);
 			} else {
 			    echo "Error updating record: " . $conn->error;
 			}
 		}
 		else{
-		echo "無權限刪除該留言";
+			$arr = array('result'=>'notYour');
+			echo json_encode($arr);
 		}
 	}
 $conn->close();
@@ -58,12 +62,11 @@ $conn->close();
 //  --- start ---
 header("Content-Type: application/json; charset=UTF-8");
 $random_id = $_COOKIE['board_random_id'];
-$obj = json_decode($_POST["x"], false);
-if ($obj->type == 'edit'){
-	edit($obj->newContent, $obj->comment_id, $random_id);
+if ($_POST['type'] == 'edit'){
+	edit($_POST['content'], $_POST['comment_id'], $random_id);
 }
-else if($obj->type == 'delete'){
-	delete($obj->comment_id, $random_id);
+else if($_POST['type'] == 'delete'){
+	delete($_POST['comment_id'], $random_id);
 }
 
 ?>

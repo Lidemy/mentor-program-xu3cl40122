@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
         })
     }
+    
     // --- 刪除留言 ---
     var delete_button = dqa('.delete_button')
     for(var i = 0; i < delete_button.length; i++){
