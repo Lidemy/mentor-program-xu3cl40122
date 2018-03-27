@@ -3,7 +3,9 @@
 include('connect.php');
 
 header("Content-Type: application/json; charset=UTF-8");
-$obj = json_decode($_POST["x"], false);
+//$obj = json_decode($_POST["x"], false);
+$content = $_POST['content'];
+$parent_id = $_POST['parent_id'];
 // identify
 $board_random_id =  $_COOKIE['board_random_id'];
 $id_stmt = $conn->prepare("SELECT * FROM xu3cl40122_users_certificate where id = ?");
@@ -21,9 +23,13 @@ if($id_result->num_rows > 0){
         $row = $result->fetch_assoc();
         $sid = $row['sid'];
 		$stmt = $conn->prepare("INSERT INTO xu3cl40122_comment (parent_id, content, user_id) VALUES (?, ?, ?)");
-		$stmt->bind_param('isi',$obj->parent_id, $obj->content, $sid);
+		$stmt->bind_param('isi',$parent_id, $content, $sid);
 		$stmt->execute() or trigger_error($stmt->error, E_USER_ERROR);
-		echo "pass";
+		$last_id = $conn->insert_id;
+		date_default_timezone_set('Asia/Taipei');
+		$time = date("Y-m-d H:i:s");
+		$arr = array('result'=>'success','id'=>$last_id,'user'=>$nickname,'time'=>$time);
+		echo json_encode($arr);
 		$stmt->close();
     }
 }

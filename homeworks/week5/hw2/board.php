@@ -7,7 +7,8 @@
 		<link rel="stylesheet" type="text/css" href="normalize.css">
 		<link rel="stylesheet" type="text/css" href="board.css">
 		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
-		<script type="text/javascript" src="board.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="bd_jquery.js"></script>
 		<title>留言板</title>
 	</head>
 	<!--- check cookie -->
@@ -27,14 +28,16 @@
 	?>
 	<body>
 		<!-- navBar -->
-		<div class="navbar">
+		
+		<div class="d_navbar">
 			<div class="logo"><h1>iDearcard</h1></div>
 			<div class="navList">
-				<div class="navButton logout">登出</div>
+				<div class="navButton logout ">登出</div>
 				<div class="navButton navBar_username"><?php echo htmlspecialchars($us_row['nickname'],ENT_QUOTES, 'utf-8');  ?></div>
 			</div>
 		</div>
-		<div class="container">
+
+		<div class="dcontainer">
 			<!-- 留言表單 -->
 			<div class="mainComment_container">
 				<form class="mainComment_form">

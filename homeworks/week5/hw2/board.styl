@@ -13,7 +13,7 @@ h1,h2
 a 
 	color white 
 	text-decoration none
-.navbar
+.d_navbar
 	width 100%
 	height 65px
 	background #006aa6
@@ -27,7 +27,8 @@ a
 	margin-left 5%
 	font-family 'PT Sans', Arial,Helvetica,sans-serif
 .navList 
-	margin-left 70%
+	position absolute
+	right 30px
 	display inline-flex 
 	height inherit
 .navButton
@@ -37,12 +38,19 @@ a
 	padding-right 20px
 	&:hover
 		cursor pointer
-.container 
-	width 720px
+	min-width 50px
+.dcontainer 
+	max-width 720px
 	background white
 	margin 0 auto 
 	padding 35px 35px
 	border-radius 5px
+@media (max-width: 720px)
+	.dcontainer
+		width 90vw
+		padding 10px
+	body 
+		font-size 75% 
 .mainComment_container
 	padding-bottom 20px
 	border-bottom 1px solid #dedede
@@ -77,13 +85,38 @@ a
 	margin-left 10%
 	position relative
 	padding-bottom 30px
-	
-.replyCol
+.submit_button 
+		background #006aa6
+		width 80px
+		height 30px
+		border-radius 5px
+		color white
+		border none
+		font-family Microsoft JhengHei,Arial,Helvetica,sans-serif
+		transition color,background 0.3s ease-out
+		border 1px solid #006aa6
+		&:hover 
+			cursor pointer
+			background white
+			color #006aa6
+.selfReply
 	background #96d1f3
 	border-radius 10px
 	padding 5px
 	margin-bottom 10px
 	position relative
+	.submit_button 
+		background #00324e
+		width 80px
+		height 30px
+		border-radius 5px
+		color white
+		border none
+		font-family Microsoft JhengHei,Arial,Helvetica,sans-serif
+		transition border 0.3s ease-out
+		border 1px solid #00324e
+		&:hover 
+			border 1px solid white
 .replyButton
 	cursor pointer
 	position absolute
@@ -131,18 +164,6 @@ a
 	color white
 	display inline-block
 	margin 0px 3px
-.submit_button 
-	background #006aa6
-	width 80px
-	height 30px
-	border-radius 5px
-	color white
-	border none
-	font-family Microsoft JhengHei,Arial,Helvetica,sans-serif
-	transition background 0.3s ease-out
-	&:hover 
-		cursor pointer
-		background #014f7b
 .modify_button
 	position absolute
 	top 30px
@@ -191,5 +212,8 @@ a
 	color white 
 	li 
 		color black
+.logout 
+	 white-space nowrap	
+.display-block
+	display block
 	
-		
