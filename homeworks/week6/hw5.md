@@ -14,7 +14,7 @@ $stmt->close();
 ```
 
 ## 請說明 XSS 的攻擊原理以及防範方法
-cross sit scripting(跨站腳本攻擊),原理類似 SQL injection ， 在 input 輸入 html 或 js 語法 ， 當瀏覽器在執行該網頁時就會執行該程式碼，理論上能執行 js 就可以做到任何事情，所以後果慘不忍睹，像是竄改網站內容、導到別的網站、偷取 cookie 資料等。
+cross site scripting(跨站腳本攻擊),原理類似 SQL injection ， 在 input 輸入 html 或 js 語法 ， 當瀏覽器在執行該網頁時就會執行該程式碼，理論上能執行 js 就可以做到任何事情，所以後果慘不忍睹，像是竄改網站內容、導到別的網站、偷取 cookie 資料等。
 解決方法 => 對特定字元進行跳脫   
 PHP 有 htmlspecialchars($str, ENT_QUOTES, ‘utf-8’) 這個 function 可以用
 
