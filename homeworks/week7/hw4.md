@@ -8,13 +8,15 @@
 
 
 ## 請找出任何一個與 Bootstrap 類似的 library
-
+foundation => 與 bootstrap 一樣是開源的前端框架，感覺跟 bootatrap 大同小異，兩者各有些微優缺點或是功能比較多的地方，foundation 相較之下比較少人用所以比較不會撞衫。
 
 
 ## jQuery 是什麼？
-
+javascript 的 library(函式庫)，透過 jquery 開發者可以的寫出更精簡且可讀性高的程式碼，同時兼顧一些跨瀏覽器的問題，正如同其 slogan "write less, do more" ，缺點是相較純 js 效能較差。
 
 
 ## jQuery 與 vanilla JS 的關係是什麼？
-
+vanilla JS 是指不使用 library 寫 javascript，相較 jQuery 有更好的效能，但是程式碼可讀性相對較低。
+                      
+如果要說兩者的關係的話有點像自排車跟手排車，jQuery就像自排車一樣，操作門檻較低、而且比較方便。而 vanilla JS 就像手排車，性能較好，但是有些細微的部分都需要自己處理，因此難度較高。
 
