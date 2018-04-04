@@ -106,7 +106,7 @@
 			<input type="hidden" value=<?php echo $re_row['comment_id']; ?> name="comment_id">
 			<p class="replyContent"><?php echo htmlspecialchars($re_row['content'],ENT_QUOTES, 'utf-8'); ?></p>
 			<div class="modify_button"  tabindex="100">...</div>
-		<div class="modify_navList">
+			<div class="modify_navList">
 				<ul>
 					<li class="edit_button"><i class="fa fa-pencil icon"></i>編輯</li>
 					<li class="delete_button"><i class="fa fa-times icon"></i>刪除</li>
@@ -143,6 +143,5 @@
 						?>
 				</div>
 			</div>
-		</div>
 	</body>
 </html>
