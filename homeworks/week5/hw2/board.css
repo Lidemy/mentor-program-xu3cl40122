@@ -122,26 +122,12 @@ a {
   background: #fff;
   color: #006aa6;
 }
-.selfReply {
+.replyCol {
   background: #96d1f3;
   border-radius: 10px;
   padding: 5px;
   margin-bottom: 10px;
   position: relative;
-}
-.selfReply .submit_button {
-  background: #00324e;
-  width: 80px;
-  height: 30px;
-  border-radius: 5px;
-  color: #fff;
-  border: none;
-  font-family: Microsoft JhengHei, Arial, Helvetica, sans-serif;
-  transition: border 0.3s ease-out;
-  border: 1px solid #00324e;
-}
-.selfReply .submit_button:hover {
-  border: 1px solid #fff;
 }
 .replyButton {
   cursor: pointer;
@@ -258,6 +244,20 @@ a {
 }
 .selfReply li {
   color: #000;
+}
+.selfReply .submit_button {
+  background: #00324e;
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  font-family: Microsoft JhengHei, Arial, Helvetica, sans-serif;
+  transition: border 0.3s ease-out;
+  border: 1px solid #00324e;
+}
+.selfReply .submit_button:hover {
+  border: 1px solid #fff;
 }
 .logout {
   white-space: nowrap;
