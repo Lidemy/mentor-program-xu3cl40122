@@ -94,6 +94,7 @@ body {
 }
 .add_task_form {
   margin-top: 30px;
+  display: none;
 }
 .add_task_form input[type="text"] {
   width: 100%;
@@ -103,8 +104,8 @@ body {
 .add_task_form input[type = "submit"] {
   margin-right: 10px;
 }
-.display-none {
-  display: none;
+.display-block {
+  display: block;
 }
 .submit_container {
   display: inline-flex;
