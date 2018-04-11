@@ -29,6 +29,16 @@ body {
 .thing_container i {
   display: none;
 }
+.thing_container-done {
+  border-bottom: 1px solid rgba(128,128,128,0.29);
+  width: 100%;
+  padding: 10px 0px;
+  display: inline-flex;
+  align-items: center;
+}
+.thing_container-done p {
+  margin: 0px 10px;
+}
 .thing_container-done .circle {
   width: 15px;
   height: 15px;
