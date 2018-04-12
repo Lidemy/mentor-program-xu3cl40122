@@ -150,9 +150,9 @@ $(document).ready(()=>{
     })
     // --- 修改留言 ---
     $(document).on('click','.edit_button',(e)=>{
-        let beForm = $(e.target).parent().parent().prev().prev().text()
-        let comment_id = $(e.target).parent().parent().prev().prev().prev().val()
-        $(e.target).parent().parent().prev().prev().html(`
+        let beForm = $(e.target).parent().parent().parent().children('p.commentContent').text()
+        let comment_id = $(e.target).parent().parent().parent().children('input[type="hidden"]').val()
+        $(e.target).parent().parent().parent().children('p.commentContent').html(`
             <form class="editForm">
                     <textarea  class="replyComment">${beForm}</textarea>
                     <input type="submit" name="" class="submit_button">
@@ -193,7 +193,7 @@ $(document).ready(()=>{
 
     // --- 刪除留言 ---
     $(document).on('click','.delete_button',(e)=>{
-        let comment_id = $(e.target).parent().parent().prev().prev().prev().val()
+        let comment_id = $(e.target).parent().parent().parent().children('input[type="hidden"]').val()
         deleteComment(comment_id)
     })
 })

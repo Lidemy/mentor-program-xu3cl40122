@@ -1,7 +1,7 @@
 var list = []
 const addTask = (value,index)=>{
 	var thing_container_class = ( list[index][1] == 'd') ? 'thing_container-done' : 'thing_container'
-	let t = `<div class='${thing_container_class}' data-index='${index}'>
+	let t = `<div class='${thing_container_class}' data-index='${index}' draggable="true">
 				<div class="circle"></div>
 				<p class="task">${value}</p>
 				<i class="fa fa-trash-o delete"></i>
@@ -49,6 +49,11 @@ $(document).ready(()=>{
 		}
 	})
 
-
+	document.ondragstart = (e)=>{
+		e.dataTransfer.setData("Text",e.target.querySelector('p').innerText)
+	}
+	document.addEventListener('drop',(e)=>{
+		console.log(e)
+	})
 
 })
