@@ -1,0 +1,222 @@
+
+*
+	box-sizing border-box
+body 
+	padding-top 100px
+	font-weight 300
+	background #00324e
+	font-family Microsoft JhengHei,Arial,Helvetica,sans-serif
+	font-weight 400
+h1,h2
+	margin 0
+	font-weight normal
+a 
+	color white 
+	text-decoration none
+textarea 
+	resize none
+.d_navbar
+	width 100%
+	height 65px
+	background #006aa6
+	position fixed
+	top 0
+	display flex 
+	align-items center
+	color white
+	z-index 10
+.logo
+	margin-left 5%
+	font-family 'PT Sans', Arial,Helvetica,sans-serif
+.navList 
+	position absolute
+	right 30px
+	display inline-flex 
+	height inherit
+.navButton
+	height inherit
+	text-align center
+	line-height 65px
+	padding-right 20px
+	&:hover
+		cursor pointer
+	min-width 50px
+.dcontainer 
+	max-width 720px
+	background white
+	margin 0 auto 
+	padding 35px 35px
+	border-radius 5px
+@media (max-width: 720px)
+	.dcontainer
+		width 90vw
+		padding 10px
+	body 
+		font-size 75% 
+.mainComment_container
+	padding-bottom 20px
+	border-bottom 1px solid #dedede
+	
+.mainComment 
+	width 100% 
+	height 100px 
+	border 1px solid gray
+	border-radius 5px
+.replyComment
+	width 100%
+	height 50px
+	border 1px solid gray
+	border-radius 5px
+.row 
+	width 100%
+.col
+	width 100%
+	border-bottom 1px solid #dedede
+	padding 10px 0px
+	position relative
+.inf
+	width 100%
+	display inline-flex 
+	justify-content space-between
+	p 
+		line-height 0.3rem
+	.time 
+		color #797979
+.replyContainer
+	width 90%
+	margin-left 10%
+	position relative
+	padding-bottom 30px
+.submit_button 
+		background #006aa6
+		width 80px
+		height 30px
+		border-radius 5px
+		color white
+		border none
+		font-family Microsoft JhengHei,Arial,Helvetica,sans-serif
+		transition color,background 0.3s ease-out
+		border 1px solid #006aa6
+		&:hover 
+			cursor pointer
+			background white
+			color #006aa6
+.replyCol
+	background #96d1f3
+	border-radius 10px
+	padding 5px
+	margin-bottom 10px
+	position relative
+	
+.replyButton
+	cursor pointer
+	position absolute
+	right 20px
+	bottom 10px
+	transition color 0.3s ease-out
+	&:hover 
+		color #1d92d6
+.replyFormContainer
+	display none
+.whoComment
+	font-weight bold
+	font-size 1.1rem
+.time
+	font-weight 200
+	
+.pageContainer
+	width 500px
+	margin 0 auto
+	margin-top 25px
+	p 
+		display inline
+	
+.page 
+	background #006aa6
+	width 25px
+	height 25px
+	border-radius 50%
+	text-align center
+	line-height 25px
+	color white
+	display inline-block
+	margin 0px 3px
+	transition background 0.3s ease-out
+	&:hover
+		cursor pointer
+		background #00324e
+.pageNow 
+	background #00324e
+	width 25px
+	height 25px
+	border-radius 50%
+	text-align center
+	line-height 25px
+	color white
+	display inline-block
+	margin 0px 3px
+.modify_button
+	position absolute
+	top 30px
+	right 10px
+	font-size 1.5rem
+	color #797979
+	transition color 0.3s ease-out
+	&:hover 
+		cursor pointer
+		color black
+	&:focus
+		outline none
+.commentContent
+	word-wrap break-word
+	margin-right 75px
+.replyContent
+	word-wrap break-word
+	margin-right 75px
+	margin-top 0px
+.modify_navList
+	position absolute
+	top 75px 
+	right 10px
+	background white
+	z-index 10
+	box-shadow 0 3px 8px rgba(0, 0, 0, .3)
+	border-radius 5px
+	display none
+	ul 
+		margin 0
+		padding 5px
+		list-style none
+	li 
+		transition color,background 0.2s ease-out
+		&:hover 
+			background #006aa6
+			color white
+			cursor pointer
+.editForm
+	margin-bottom 10px
+	textarea
+		width 90%
+		margin-right 10%
+.selfReply
+	background #006aa6
+	color white 
+	li 
+		color black
+	.submit_button 
+		background #00324e
+		width 80px
+		height 30px
+		border-radius 5px
+		color white
+		border none
+		font-family Microsoft JhengHei,Arial,Helvetica,sans-serif
+		transition border 0.3s ease-out
+		border 1px solid #00324e
+		&:hover 
+			border 1px solid white
+.logout 
+	 white-space nowrap	
+.display-block
+	display block
+
