@@ -88,7 +88,7 @@ $(document).ready(function(){
 		e.preventDefault()
 		if (canSignUp){
 			var request = new XMLHttpRequest()
-    		request.open("POST", "http://localhost:3000/ajax")
+    		request.open("POST", "http://localhost:3000/signUp")
     		var accountData = {
     			'email':dq('.signup_email').value, 
     			'pwd':dq('.signup_password').value,
@@ -126,15 +126,17 @@ $(document).ready(function(){
 		xmlhttp.onreadystatechange = function(){
 			if (this.readyState == 4 && this.status == 200){
 				if(this.responseText =='pass'){
-					window.location.reload()
+					//window.location.reload()
+					alert(777)
 				}
 				else{
-					alert('帳號密碼錯誤')
+					//alert('帳號密碼錯誤')
+					console.log(this.responseText)
 				}
 			}
 		}
-		xmlhttp.open("POST", "login.php", true);
-		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send('x='+j_data)
+		xmlhttp.open("POST", "http://localhost:3000/logIn", true);
+		xmlhttp.setRequestHeader("Content-type", "application/json");
+		xmlhttp.send(j_data)
 	})
 });
