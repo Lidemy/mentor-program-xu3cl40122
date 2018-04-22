@@ -26,7 +26,7 @@ app.route('/signUp')
         });
     });
 // --- LOGIN ---
-app.route('/logIn')
+app.route('/login')
     .post(function (req, res) {
         var us = req.body
         conn.connect((err) => {
@@ -41,6 +41,7 @@ app.route('/logIn')
         })
 
     })
+//123
 
 app.listen(3000, () => {
             console.log('app start')

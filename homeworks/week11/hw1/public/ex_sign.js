@@ -135,7 +135,7 @@ $(document).ready(function(){
 				}
 			}
 		}
-		xmlhttp.open("POST", "http://localhost:3000/logIn", true);
+		xmlhttp.open("POST", "http://localhost:3000/login", true);
 		xmlhttp.setRequestHeader("Content-type", "application/json");
 		xmlhttp.send(j_data)
 	})
