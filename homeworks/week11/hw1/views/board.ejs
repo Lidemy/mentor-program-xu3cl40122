@@ -54,45 +54,44 @@
                     </ul>
                 </div>
                 <div class="replyContainer">
-            <!-- 串子留言-->
-            <% for(var j = 0; j < cmmt[i].reply.length; i++){  %>
-                <!-- class 要改-->
-                <div class='replyCol'>
-                    <div class="inf">
-                        <p class="whoComment">
-                            <%= cmmt[i].reply[j].nickname %>
+                <!-- 串子留言-->
+                <% for(var j = 0; j < cmmt[i].reply.length; j++){  %>
+                    <div class='replyCol'>
+                        <div class="inf">
+                            <p class="whoComment">
+                                <%= cmmt[i].reply[j].nickname %>
+                            </p>
+                            <p class="time">
+                                <%= cmmt[i].reply[j].createdAt %>
+                            </p>
+                        </div>
+                        <input type="hidden" name="comment_id" value= <%= cmmt[i].reply[j].id %> >
+                        <p class="replyContent commentContent">
+                            <%= cmmt[i].reply[j].content %>
                         </p>
-                        <p class="time">
-                            <%= cmmt[i].reply[j].createdAt %>
-                        </p>
+                        <div class="modify_button" tabindex="100">...</div>
+                        <div class="modify_navList">
+                            <ul>
+                                <li class="edit_button">
+                                    <i class="fa fa-pencil icon"></i>編輯</li>
+                                <li class="delete_button">
+                                    <i class="fa fa-times icon"></i>刪除</li>
+                            </ul>
+                        </div>
                     </div>
-                    <input type="hidden" name="comment_id" value= <%= cmmt[i].reply[j].id %> >
-                    <p class="replyContent commentContent">
-                        <%= cmmt[i].reply[j].content %>
-                    </p>
-                    <div class="modify_button" tabindex="100">...</div>
-                    <div class="modify_navList">
-                        <ul>
-                            <li class="edit_button">
-                                <i class="fa fa-pencil icon"></i>編輯</li>
-                            <li class="delete_button">
-                                <i class="fa fa-times icon"></i>刪除</li>
-                        </ul>
+                <% } %>
+                    <div class="replyFormContainer">
+                        <form class="replyForm">
+                            <textarea class="replyComment" placeholder="想說什麼嗎?"></textarea>
+                            <input type="submit" name="" class="submit_button">
+                            <input type="hidden" name="comment_id" value= <%= cmmt[i].id %>>
+                        </form>
                     </div>
+                    <div class="replyButton">reply</div>
                 </div>
-            <% } %>
-            <div class="replyFormContainer">
-                <form class="replyForm">
-                    <textarea class="replyComment" placeholder="想說什麼嗎?"></textarea>
-                    <input type="submit" name="" class="submit_button">
-                    <input type="hidden" name="comment_id" value=<?php echo $row[ 'comment_id'];?>>
-                </form>
             </div>
-            <div class="replyButton">reply</div>
-        </div>
-    </div>
             <% } %>
-    </div>
+        </div>
     </div>
     </body>  
 </html>
