@@ -32,13 +32,17 @@ app.get('/board',(req,res)=>{
             conn.query(sql,(err,results)=>{
                 if(err) console.log(err)
                 res.locals.cmmt[i].reply = results
-                console.log(res.locals.cmmt[i].reply)
+                //console.log(res.locals.cmmt[i].reply)
             })
         }
-        console.log(res.locals.cmmt)
+        setTimeout(()=>{
+            res.render('board')
+            console.log(res.locals.cmmt)
+        },500)
+        
     })
     
-    res.send('123')
+    
 })
 
 app.listen(3000, () => {
