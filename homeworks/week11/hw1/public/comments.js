@@ -10,6 +10,11 @@ const Comments = sequelize.define('Comments', {
     },
     content: { // 不要存明碼
         type: Sequelize.STRING
+    },
+    id:{
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
     }
 }, {
         tableName: 'orm_comments'

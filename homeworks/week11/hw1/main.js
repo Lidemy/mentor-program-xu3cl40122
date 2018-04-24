@@ -37,7 +37,6 @@ app.get('/board',(req,res)=>{
             conn.query(sql,(err,results)=>{
                 if(err) console.log(err)
                 res.locals.cmmt[i].reply = results
-                //console.log(res.locals.cmmt[i].reply)
             })
         }
         setTimeout(()=>{

@@ -37,13 +37,13 @@ const addMainComment = (commentText) =>{
         success:function(resp){
             //res = JSON.parse(resp)
             console.log(resp)
-            /*
+            
             $('.mainComment').val('')
             $('.row').prepend(`
                 <div class="col">
                     <div class="inf">
                         <p class="whoComment">${resp.user}</p>
-                        <p class="time">${resp.time}</p>
+                        <p class="time">${resp.createdAt}</p>
                     </div>
                     <input type="hidden" value=${resp.id}>
                     <p class="commentContent">${commentText}</p>
@@ -65,7 +65,6 @@ const addMainComment = (commentText) =>{
                     <div class="replyButton">reply</div>
                     </div>
                 </div>`)
-                */
         },
         error: function(){
             alert('error')

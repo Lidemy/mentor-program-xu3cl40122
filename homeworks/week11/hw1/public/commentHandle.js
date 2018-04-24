@@ -1,4 +1,4 @@
-const Comments = require('./comments')
+const conn = require('../connect.js').conn
 
 module.exports = {
 	add:function(req,res){
@@ -6,10 +6,10 @@ module.exports = {
 			content:req.body.content,
 			parent_id:req.body.parent_id,
 			user_id:req.session.user_id
-		}).then((err,result)=>{
-			if(err) console.log(err)
-			console.log(result)
-			//res.json({})
-		})
+		}).then((data)=>{
+			res.json(data.get({plain: true}))
+		}).catch(function(error) {
+        res.json({error:error, stackError:error.stack});
+    });
 	}
 }
