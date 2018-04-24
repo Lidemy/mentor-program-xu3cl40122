@@ -75,14 +75,15 @@ const addMainComment = (commentText) =>{
 
 const addReplyComment = (commentText,parent_id)=>{
     $.ajax({
-        url: 'addComment.php',
+        url: 'http://localhost:3000/board/add',
+        contentType: "application/json",
         type: 'POST',
-        data: {
+        data: JSON.stringify({
             content : commentText,
             parent_id : parent_id
-        },
+        }),
         success : (resp)=>{
-            document.location.href = 'board.php'
+            location.reload()
         },
         error: function(){
             alert('error')

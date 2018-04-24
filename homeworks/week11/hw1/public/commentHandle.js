@@ -12,7 +12,7 @@ module.exports = {
 				var time = dt.format('Y-m-d H:M:S')
 				resData = {
 					id: result.insertId,
-					user: req.session.user_id,
+					user: req.session.user,
 					create_at:time
 				}
 				res.json(resData)
