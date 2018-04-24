@@ -25,6 +25,7 @@ module.exports = {
         }).then((data)=>{
             if(data){
                 req.session.nickname = data.nickname
+                req.session.user_id = data.user_id
                 res.send('pass')
             }else{
                 res.send('error')

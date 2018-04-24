@@ -126,8 +126,8 @@ $(document).ready(function(){
 		xmlhttp.onreadystatechange = function(){
 			if (this.readyState == 4 && this.status == 200){
 				if(this.responseText =='pass'){
-					//window.location.reload()
-					alert(777)
+					console.log(777)
+					document.location.href = 'http://localhost:3000/board'
 				}
 				else{
 					//alert('帳號密碼錯誤')

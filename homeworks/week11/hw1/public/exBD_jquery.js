@@ -28,7 +28,7 @@ const dqa = (n) =>{
 
 const addMainComment = (commentText) =>{
     $.ajax({
-        url: 'addComment.php',
+        url: 'http://localhost:3000/board/add',
         type: 'POST',
         data:{
             content : commentText,
@@ -36,6 +36,8 @@ const addMainComment = (commentText) =>{
         },
         success:function(resp){
             //res = JSON.parse(resp)
+            console.log(resp)
+            /*
             $('.mainComment').val('')
             $('.row').prepend(`
                 <div class="col">
@@ -63,6 +65,7 @@ const addMainComment = (commentText) =>{
                     <div class="replyButton">reply</div>
                     </div>
                 </div>`)
+                */
         },
         error: function(){
             alert('error')

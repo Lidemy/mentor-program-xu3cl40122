@@ -14,18 +14,23 @@ const User = require('./public/users')
 const Comments = require('./public/comments')
 const conn = require('./connect').conn
 const loginHandle = require('./public/login')
+const commentHandle = require('./public/commentHandle.js')
 
 app.post('/signUp',loginHandle.signUp)
 app.post('/login',loginHandle.login)
+app.post('/board/add',commentHandle.add)
 app.get('/us',(req,res)=>{
     res.send(req.session.nickname)
 })
+
+// 主頁面
 app.get('/board',(req,res)=>{
     conn.query("SELECT *FROM orm_comments JOIN orm_users ON orm_comments.user_id = orm_users.user_id  WHERE parent_id = 0 ORDER BY orm_comments.createdAt DESC",
     (err,results)=>{
         if(err) console.log(err)
         res.locals.cmmt = results
-        
+        res.locals.user = req.session.nickname
+        res.locals.user_id = req.session.user_id
         // --- 串子留言 ---
         for(let i = 0; i < res.locals.cmmt.length; i++){
             sql = `SELECT *FROM orm_comments JOIN orm_users ON orm_comments.user_id = orm_users.user_id  WHERE parent_id = ${res.locals.cmmt[i].id} ORDER BY orm_comments.createdAt DESC`
@@ -37,7 +42,6 @@ app.get('/board',(req,res)=>{
         }
         setTimeout(()=>{
             res.render('board')
-            console.log(res.locals.cmmt)
         },500)
         
     })
