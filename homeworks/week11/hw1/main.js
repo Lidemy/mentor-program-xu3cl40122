@@ -16,7 +16,8 @@ const commentHandle = require('./public/commentHandle.js')
 
 app.post('/signUp',loginHandle.signUp)
 app.post('/login',loginHandle.login)
-
+app.post('/board/add',commentHandle.add) 
+app.post('/board/edit', commentHandle.edit)
 
 
 // 主頁面
@@ -40,9 +41,7 @@ app.get('/board',(req,res)=>{
             res.render('board')
         },500)
         
-    })
-app.post('/board/add',commentHandle.add) 
-    
+    })    
 })
 
 app.listen(3000, () => {

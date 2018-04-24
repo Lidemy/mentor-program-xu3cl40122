@@ -1,23 +1,3 @@
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-function delete_cookie(cookie_name){
-  var cookie_date = new Date ( );  // current date & time
-  cookie_date.setTime (cookie_date.getTime() - 1);
-  document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
-} 
 
 const dq = (n) =>{
     return document.querySelector(n)
@@ -93,20 +73,16 @@ const addReplyComment = (commentText,parent_id)=>{
 
 const editComment =(commentText,comment_id)=>{
     $.ajax({
-        url: 'editComment.php',
+        url: 'http://localhost:3000/board/edit',
+        contentType: "application/json",
         type: 'POST',
-        data: {
+        data: JSON.stringify({
             content : commentText,
             comment_id : comment_id,
             type : 'edit'
-        },
+        }),
         success : (resp)=>{
-            if (resp.result == 'notYour'){
-                alert('無權限修改該留言')
-                document.location.href = 'board.php'
-            }else{
-                document.location.href = 'board.php'
-            }
+            console.log(resp)
         },
         error: function(){
             alert('error')

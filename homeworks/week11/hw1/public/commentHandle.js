@@ -17,5 +17,23 @@ module.exports = {
 				}
 				res.json(resData)
 			})
-		}
+		},
+	edit:function(req,res){
+		let sql = `SELECT * FROM node_comment WHERE comment_id = ?`
+		conn.query(sql,[req.body.comment_id],(err,result)=>{
+			if(err) console.log(err)
+			console.log(result)
+			/*var resData = {result:'pass'}
+			if(result[0].user_id != req.session.user_id){
+				resData.result = 'notSame'
+				res.json(resData)
+			}else{
+				let sql = `UPDATE node_comment SET content = ? WHERE comment_id = ?`
+				conn.query(sql,[req.body.content, req.body.comment_id], (err,result)=>{
+					if(err) resData.result = 'error'
+					res.json(resData)
+				})
+			}*/
+		})
+	}
 }

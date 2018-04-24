@@ -65,10 +65,8 @@
                                 <%= cmmt[i].reply[j].create_at %>
                             </p>
                         </div>
-                        <input type="hidden" name="comment_id" value= <%= cmmt[i].reply[j].id %> >
-                        <p class="replyContent commentContent">
-                            <%= cmmt[i].reply[j].content %>
-                        </p>
+                        <input type="hidden" name="comment_id" value=<%=cmmt[i].reply[j].comment_id%>>
+                        <p class="replyContent commentContent"><%= cmmt[i].reply[j].content %></p>
                         <div class="modify_button" tabindex="100">...</div>
                         <div class="modify_navList">
                             <ul>
