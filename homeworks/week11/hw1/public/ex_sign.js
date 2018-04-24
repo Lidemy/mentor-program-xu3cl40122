@@ -130,7 +130,7 @@ $(document).ready(function(){
 					document.location.href = 'http://localhost:3000/board'
 				}
 				else{
-					//alert('帳號密碼錯誤')
+					alert('帳號密碼錯誤')
 					console.log(this.responseText)
 				}
 			}

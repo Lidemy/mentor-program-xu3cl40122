@@ -20,7 +20,7 @@
         <div class="navList">
             <div class="navButton logout ">登出</div>
             <div class="navButton navBar_username">
-                <!-- user name-->
+                <%=user %>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
             <div class="col">
                 <div class="inf">
                     <p class="whoComment"><%= cmmt[i].nickname %></p>
-                    <p class="time"><%= cmmt[i].createdAt %></p>
+                    <p class="time"><%= cmmt[i].create_at %></p>
                 </div>
                 <input type="hidden" value=<%= cmmt[i].id %>>
                 <p class="commentContent"><%= cmmt[i].content %></p>
@@ -62,7 +62,7 @@
                                 <%= cmmt[i].reply[j].nickname %>
                             </p>
                             <p class="time">
-                                <%= cmmt[i].reply[j].createdAt %>
+                                <%= cmmt[i].reply[j].create_at %>
                             </p>
                         </div>
                         <input type="hidden" name="comment_id" value= <%= cmmt[i].reply[j].id %> >

@@ -29,21 +29,21 @@ const dqa = (n) =>{
 const addMainComment = (commentText) =>{
     $.ajax({
         url: 'http://localhost:3000/board/add',
+        contentType: "application/json",
         type: 'POST',
-        data:{
+        data:JSON.stringify({
             content : commentText,
             parent_id : 0
-        },
+        }),
         success:function(resp){
             //res = JSON.parse(resp)
             console.log(resp)
-            
             $('.mainComment').val('')
             $('.row').prepend(`
                 <div class="col">
                     <div class="inf">
                         <p class="whoComment">${resp.user}</p>
-                        <p class="time">${resp.createdAt}</p>
+                        <p class="time">${resp.create_at}</p>
                     </div>
                     <input type="hidden" value=${resp.id}>
                     <p class="commentContent">${commentText}</p>

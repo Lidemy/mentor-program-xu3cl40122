@@ -1,40 +1,35 @@
-const User = require('./users')
-var session = require('express-session')
+const conn = require('../connect.js').conn
+
 module.exports = {
     signUp:function(req,res){
-        User.create({ 
-            nickname: req.body.nickname,
-            email: req.body.email,
-            password:req.body.pwd })
-            .then(() => {
-                console.log('create!')
-                req.session.nickname = req.body.nickname
-                res.send('pass')     
-            })
-            .catch((err)=>{
+        let sql = `INSERT INTO node_users (email, password, nickname)
+                    VALUES (?, ?, ?)`
+        conn.query(sql,[req.body.email, req.body.pwd, req.body.nickname],
+        (err,results)=>{
+            if(err) {
                 console.log(err)
-                res.send(err)
-            })
+                res.send('nopass')
+            }
+            res.send('pass')
+        })
     },
+
     login:function(req,res){
-        User.find({
-            where:{
-                email:req.body.email,
-                password:req.body.pwd
-            }
-        }).then((data)=>{
-            if(data){
-                req.session.nickname = data.nickname
-                req.session.user_id = data.user_id
-                res.send('pass')
+        let sql = `SELECT * FROM node_users where email = ?`
+        conn.query(sql,[req.body.email],(err,results)=>{
+            if(err) throw err
+            if (results.length != 0){
+                if(results[0].password === req.body.pwd){
+                    req.session.user = results[0].nickname
+                    req.session.user_id = results[0].sid
+                    res.send('pass')
+                }else{
+                    res.send('nopass')
+                }
             }else{
-                res.send('error')
+                res.send('nopass')
             }
-        }).catch((err)=>{
-            console.log(err)
         })
     }
-
-
 
 }
