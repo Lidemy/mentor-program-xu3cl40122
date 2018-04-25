@@ -57,7 +57,7 @@ $(document).ready(function(){
                     }
                 }
             };
-            xmlhttp.open("GET", "signup.php?value=" + e.target.value + "&type=nickname", true);
+            xmlhttp.open("GET", "http://localhost:3000/check?value=" + e.target.value + "&type=nickname", true);
             xmlhttp.send();
         }
     })
@@ -76,10 +76,9 @@ $(document).ready(function(){
                 else{
                 	canSignUp = true
                 }
-
             }
         	};
-        xmlhttp.open("GET", "signup.php?value=" + e.target.value + "&type=email", true);
+        xmlhttp.open("GET", "http://localhost:3000/check?value=" + e.target.value + "&type=email", true);
         xmlhttp.send();
     	}	
 	})
@@ -100,6 +99,7 @@ $(document).ready(function(){
 					if(this.responseText == 'pass'){
 						alert('成功創立帳號~~')
 					}else{
+						alert('error')
 						console.log(this.responseText)
 					}
 				}
@@ -109,8 +109,6 @@ $(document).ready(function(){
 		}
 		else{
 			alert('請檢查表單')
-		}{
-
 		}
 	})
 	

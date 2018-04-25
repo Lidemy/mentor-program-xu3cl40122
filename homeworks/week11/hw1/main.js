@@ -19,6 +19,7 @@ app.post('/login',loginHandle.login)
 app.post('/board/add',commentHandle.add) 
 app.post('/board/edit', commentHandle.edit)
 app.post('/board/delete', commentHandle.delete)
+app.get('/check',loginHandle.check)
 app.get('/logout',(req,res)=>{
     req.session.destroy()
     res.redirect('/ex_signUp.html')
@@ -47,6 +48,6 @@ app.get('/board',(req,res)=>{
     })    
 })
 
-app.listen(3000, () => {
+app.listen(3000,() => {
     console.log('app main start')
 })

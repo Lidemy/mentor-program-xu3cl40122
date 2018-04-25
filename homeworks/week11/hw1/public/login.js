@@ -31,6 +31,19 @@ module.exports = {
                 res.send('nopass')
             }
         })
+    },
+    check:function(req,res){
+        let sql = `SELECT * FROM node_users where ${req.query.type} = ?`
+        conn.query(sql,[req.query.value],(err,result)=>{
+            if(err) {
+                res.send('nopass')
+                return
+            }else if(result.length!=0){
+                res.send('nopass')
+                return
+            }
+            res.send('pass')
+        })
     }
 
 }
