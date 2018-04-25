@@ -44,7 +44,7 @@
                     <p class="whoComment"><%= cmmt[i].nickname %></p>
                     <p class="time"><%= cmmt[i].create_at %></p>
                 </div>
-                <input type="hidden" value=<%= cmmt[i].id %>>
+                <input type="hidden" name="comment_id" value=<%= cmmt[i].comment_id %>>
                 <p class="commentContent"><%= cmmt[i].content %></p>
                 <div class="modify_button"  tabindex="100">...</div>
                 <div class="modify_navList">
@@ -55,8 +55,14 @@
                 </div>
                 <div class="replyContainer">
                 <!-- 串子留言-->
-                <% for(var j = 0; j < cmmt[i].reply.length; j++){  %>
-                    <div class='replyCol'>
+                <% for(var j = 0; j < cmmt[i].reply.length; j++){  
+                        if (cmmt[i].user_id === cmmt[i].reply[j].user_id){
+                            var replyClass = 'replyCol selfReply' 
+                        }else{
+                            var replyClass = 'replyCol'
+                        }
+                    %>
+                    <div class="<%=replyClass%>">
                         <div class="inf">
                             <p class="whoComment">
                                 <%= cmmt[i].reply[j].nickname %>

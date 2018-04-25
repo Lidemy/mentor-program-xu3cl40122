@@ -18,8 +18,11 @@ app.post('/signUp',loginHandle.signUp)
 app.post('/login',loginHandle.login)
 app.post('/board/add',commentHandle.add) 
 app.post('/board/edit', commentHandle.edit)
-
-
+app.post('/board/delete', commentHandle.delete)
+app.get('/logout',(req,res)=>{
+    req.session.destroy()
+    res.redirect('/ex_signUp.html')
+})
 // 主頁面
 app.get('/board',(req,res)=>{
     conn.query("SELECT *FROM node_comment JOIN node_users ON node_comment.user_id = node_users.sid  WHERE parent_id = 0 ORDER BY node_comment.create_at DESC",

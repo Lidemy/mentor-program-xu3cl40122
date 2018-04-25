@@ -17,7 +17,6 @@ const addMainComment = (commentText) =>{
         }),
         success:function(resp){
             //res = JSON.parse(resp)
-            console.log(resp)
             $('.mainComment').val('')
             $('.row').prepend(`
                 <div class="col">
@@ -78,11 +77,17 @@ const editComment =(commentText,comment_id)=>{
         type: 'POST',
         data: JSON.stringify({
             content : commentText,
-            comment_id : comment_id,
-            type : 'edit'
+            comment_id : comment_id
         }),
         success : (resp)=>{
-            console.log(resp)
+            if(resp.result == 'notSame'){
+                alert('無權限修改該留言')
+            }else if(resp.result == 'error'){
+                alert('error')
+            }else if(resp.result == 'pass'){
+                alert('修改成功!')
+            }
+            location.reload()
         },
         error: function(){
             alert('error')
@@ -93,17 +98,17 @@ const editComment =(commentText,comment_id)=>{
 
 const deleteComment = (comment_id)=>{
     $.ajax({
-        url: 'editComment.php',
+        url: 'http://localhost:3000/board/delete',
+        contentType: "application/json",
         type: 'POST',
-        data: {
-            comment_id : comment_id,
-            type : 'delete'
-        },
+        data: JSON.stringify({
+            comment_id : comment_id
+        }),
         success : (resp)=>{
-            if (resp.result == 'notYour'){
+            if (resp.result == 'notSame'){
                 alert('無權限刪除該留言')
             }else{
-                document.location.href = 'board.php'
+                location.reload()
             }
         },
         error: function(resp){
@@ -141,8 +146,7 @@ $(document).ready(()=>{
     })
     // --- log out ---
     dq('.logout').addEventListener('click',()=>{
-        delete_cookie("board_random_id")
-        document.location.href='signup.html'
+        location.href = 'http://localhost:3000/logout'
     })
 
     // 送出留言

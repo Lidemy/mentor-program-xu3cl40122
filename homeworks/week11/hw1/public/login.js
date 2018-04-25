@@ -9,6 +9,7 @@ module.exports = {
             if(err) {
                 console.log(err)
                 res.send('nopass')
+                return
             }
             res.send('pass')
         })
