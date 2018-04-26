@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="board.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="exBD_jquery.js"></script>
+    <title>留言板</title>
+</head>
+<body>
+    <!-- navBar -->
+    <div class="d_navbar">
+        <div class="logo">
+            <h1>iDearcard</h1>
+        </div>
+        <div class="navList">
+            <div class="navButton logout ">登出</div>
+            <div class="navButton navBar_username">
+                <%=user %>
+            </div>
+        </div>
+    </div>
+
+    <div class="dcontainer">
+        <!-- 留言表單 -->
+        <div class="mainComment_container">
+            <form class="mainComment_form">
+                <h1>留言區</h1>
+                <textarea class="mainComment" placeholder="想說什麼嗎?"></textarea>
+                <input type="submit" name="" class="submit_button">
+                <input type="hidden" name="comment_id" value="0">
+            </form>
+        </div>
+        <div class="row">
+            <!--串留言-->
+            <% for(var i = 0; i < cmmt.length; i++){ %>
+
+            <div class="col">
+                <div class="inf">
+                    <p class="whoComment"><%= cmmt[i].nickname %></p>
+                    <p class="time"><%= cmmt[i].create_at %></p>
+                </div>
+                <input type="hidden" name="comment_id" value=<%= cmmt[i].comment_id %>>
+                <p class="commentContent"><%= cmmt[i].content %></p>
+                <div class="modify_button"  tabindex="100">...</div>
+                <div class="modify_navList">
+                    <ul>
+                        <li class="edit_button"><i class="fa fa-pencil icon"></i>編輯</li>
+                        <li class="delete_button"><i class="fa fa-times icon"></i>刪除</li>
+                    </ul>
+                </div>
+                <div class="replyContainer">
+                <!-- 串子留言-->
+                <% for(var j = 0; j < cmmt[i].reply.length; j++){  
+                        if (cmmt[i].user_id === cmmt[i].reply[j].user_id){
+                            var replyClass = 'replyCol selfReply' 
+                        }else{
+                            var replyClass = 'replyCol'
+                        }
+                    %>
+                    <div class="<%=replyClass%>">
+                        <div class="inf">
+                            <p class="whoComment">
+                                <%= cmmt[i].reply[j].nickname %>
+                            </p>
+                            <p class="time">
+                                <%= cmmt[i].reply[j].create_at %>
+                            </p>
+                        </div>
+                        <input type="hidden" name="comment_id" value=<%=cmmt[i].reply[j].comment_id%>>
+                        <p class="replyContent commentContent"><%= cmmt[i].reply[j].content %></p>
+                        <div class="modify_button" tabindex="100">...</div>
+                        <div class="modify_navList">
+                            <ul>
+                                <li class="edit_button">
+                                    <i class="fa fa-pencil icon"></i>編輯</li>
+                                <li class="delete_button">
+                                    <i class="fa fa-times icon"></i>刪除</li>
+                            </ul>
+                        </div>
+                    </div>
+                <% } %>
+                    <div class="replyFormContainer">
+                        <form class="replyForm">
+                            <textarea class="replyComment" placeholder="想說什麼嗎?"></textarea>
+                            <input type="submit" name="" class="submit_button">
+                            <input type="hidden" name="comment_id" value=<%=cmmt[i].comment_id%>>
+                        </form>
+                    </div>
+                    <div class="replyButton">reply</div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    </body>  
+</html>
