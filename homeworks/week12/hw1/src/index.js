@@ -52,6 +52,7 @@ class App extends React.Component{
     })
   }
   render(){
+    console.log(this.state.todos)
     return(
       <div>
         TODO: <input value={this.state.value} onChange={this.handleChange} />
