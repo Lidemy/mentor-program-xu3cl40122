@@ -1,25 +1,73 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
+
+class Post extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            post:{}
+        }
+    }
+    componentDidMount() {
+        axios.get('https://jsonplaceholder.typicode.com/posts/'+this.props.id).then(response => {
+            this.setState({
+                post: response.data
+            })
+        })
+    }
+    render(){
+        const {post} = this.state
+        return(
+            <div>
+                <h2>{post.title}</h2>
+                <div>{}</div>
+                <p>{post.body}</p>
+            </div>
+        )
+    }
+}
 
 class Home extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            posts: []
+            posts: [],
+            postId : null
         }
     }
+
+    componentDidMount(){
+        axios.get('https://jsonplaceholder.typicode.com/posts').then(response =>{
+            this.setState({
+                posts : response.data
+            })
+        })
+    }
+
+    componentDidUpdate(perpProps,prevState){
+        console.log('didUpdate',prevState)
+    }
     render(){
-        const {posts} = this.state
+        const {posts,postId} = this.state
         return(
             <div>
                 <h2>Blog posts</h2>
-                <ul className="list-group">
+                {
+                    postId && <Post id ={postId} />
+                }
+                {   !postId && <ul className="list-group">
                     {posts.map(post =>{
                         return(
-                            <li className="list-group-item">{post.title}</li>
+                            <li className="list-group-item" key ={post.id} onClick ={()=>{
+                                this.setState({
+                                    postId : post.id
+                                })
+                            }} >{post.title}</li>
                         )
                     })}
                 </ul>
+                }
             </div>
         )
     }
@@ -67,7 +115,6 @@ class Navbar extends React.Component {
 
     render() {
         const { tab } = this.state
-        console.log(tab)
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
