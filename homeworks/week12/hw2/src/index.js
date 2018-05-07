@@ -21,7 +21,7 @@ class Post extends React.Component{
         return(
             <div>
                 <h2>{post.title}</h2>
-                <div>{}</div>
+                <div>id : {post.id}</div>
                 <p>{post.body}</p>
             </div>
         )
@@ -35,6 +35,7 @@ class Home extends React.Component{
             posts: [],
             postId : null
         }
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount(){
@@ -44,7 +45,11 @@ class Home extends React.Component{
             })
         })
     }
-
+    handleClick(){
+        this.setState({
+            postId:null
+        })
+    }
     componentDidUpdate(perpProps,prevState){
         console.log('didUpdate',prevState)
     }
@@ -52,6 +57,9 @@ class Home extends React.Component{
         const {posts,postId} = this.state
         return(
             <div>
+                {
+                    postId && <button type="button" className="btn btn-primary" onClick={this.handleClick} style ={{marginTop: '20px'}}>Back</button>
+                }
                 <h2>Blog posts</h2>
                 {
                     postId && <Post id ={postId} />
